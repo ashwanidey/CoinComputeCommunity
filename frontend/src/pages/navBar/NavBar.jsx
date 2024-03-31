@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./navBar.css"
 import { NavLink, useNavigate } from 'react-router-dom';
+import Modals from '../../components/modals/Modals';
 
 const navLinkStyle = {
   fontSize : "1.2rem",
 }
 
 const NavBar = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [isLogin,setIsLogin] = useState(false);
+
+  
   return (
     <>
     <nav className=''>
@@ -23,20 +28,25 @@ const NavBar = () => {
       </label>
 
     
-     <ul className='md:flex md:h-full md:ml-auto items-center '>
+     <ul className='md:flex md:h-full md:ml-auto items-center mb-0'>
       <NavLink to="/home">Home</NavLink>
       <a href="about.html">Feeds</a> 
       <a href="products.html">News</a>
       <a href="blog.html">Blog</a>
       <div className='flex md:h-[60%] ml-[20px] flex-row md:flex-col gap-2'>
-      <button class="button-39 flex items-center" role="button">Login</button>
-      <button class="button-39  flex items-center " role="button">SignUp</button>
+      <button class="button-39 flex items-center close-sidebar-button"  role="button" onClick={() =>{setShowModal(true); setIsLogin(true)}} >Login</button>
+      <button class="button-39  flex items-center " role="button" onClick={() =>{setShowModal(true); setIsLogin(false)} }>SignUp</button>
       </div>
       </ul>
       
     </div>
     
   </nav>
+    <Modals
+    show={showModal}
+    onHide={() => setShowModal(false)}
+    login = {isLogin}
+    />
     </>
   )
 }
