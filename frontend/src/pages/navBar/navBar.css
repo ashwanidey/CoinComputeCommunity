@@ -35,7 +35,8 @@ nav a{
   text-decoration: none;
   color: var(--text-color);
 }
-nav a:hover{
+
+nav .head:hover{
   background-color: var(--accent-color);
 }
 nav .home-link{

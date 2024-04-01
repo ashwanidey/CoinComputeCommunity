@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import LoginForms from '../forms/LoginForm';
 import "./modals.css"
 import SignUpForm from '../forms/SignUpForm';
-import { InfoForms } from '../forms/Form';
+import { InfoForms } from '../forms/InfoForm';
 
 const Modals = (props) => {
-  
+    
   return (
     <Modal
-      {...props}
+      show = {props.show}
+      onHide = {props.onHide}
       size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -24,7 +25,7 @@ const Modals = (props) => {
       </Modal.Header>
       <Modal.Body>
         
-        <InfoForms isLogin = {props.isLogin}/>
+        <InfoForms isLogin = {props.isLogin} setModal ={props.setModal} setShow = {props.setShow}  setToastName = {props.setToastName}/>
       
       </Modal.Body>
       {/* <Modal.Footer>

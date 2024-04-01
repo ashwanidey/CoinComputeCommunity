@@ -10,6 +10,9 @@ import { useDispatch } from "react-redux";
 import { setLogin } from '../../state';
 import { useNavigate } from "react-router-dom";
 
+
+
+
 const labelStyle = {
   fontWeight : "600",
   marginBotton : '20px',
@@ -29,18 +32,43 @@ export const InfoForms = (props) => {
   const navigate = useNavigate();
   const [login,setLogin] = useState(props.isLogin);
   const { Formik } = formik;
+  const [isUsernameUnique,setIsUsernameUnique] = useState("true");
+  const [isEmailUnique,setIsEmailUnique] = useState("true");
+  const [show, setShow] = useState(false);
+  const [loginErr,setLoginErr] = useState("");
 
   const isLogin = login;
   const isRegister = !login;
 
   const registerFunction = async (values, onSubmitProps) => {
-    // this allows us to send form info with image
-    // const formData = {
-    //   name: values.name,
-    //   username: values.username,
-    //   email : values.email,
-    //   password : values.password
-    // };
+
+    const existingUserResponse = await fetch("http://localhost:3001/verify/username", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: values.username }),
+      });
+      const   existingUserData = await existingUserResponse.json();
+      
+      if (!existingUserData.isUnique) {
+        // Formik.setFieldError('username', 'Username must be unique');
+        setIsUsernameUnique(existingUserData.isUnique)
+        return;
+      }
+      setIsUsernameUnique(existingUserData.isUnique)
+
+      const existingEmail = await fetch("http://localhost:3001/verify/email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: values.email }),
+      });
+      const existingEmailData = await existingEmail.json();
+      
+      if (!existingEmailData.isUnique) {
+        // Formik.setFieldError('username', 'Username must be unique');
+        setIsEmailUnique(existingEmailData.isUnique)
+        return;
+      }
+      setIsEmailUnique(existingEmailData.isUnique)
    
     
     const formData = new FormData();
@@ -52,7 +80,8 @@ export const InfoForms = (props) => {
    
 
     const savedUserResponse = await fetch(
-      "https://coincomputecommunity.onrender.com/auth/register",
+      // "https://coincomputecommunity.onrender.com/auth/register  "
+      "http://localhost:3001/auth/register",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -65,7 +94,9 @@ export const InfoForms = (props) => {
 
     if (savedUser) {
       setLogin(!login);
+      
     }
+    
   };
 
   const loginFunction = async (values, onSubmitProps) => {
@@ -75,28 +106,55 @@ export const InfoForms = (props) => {
       body: JSON.stringify(values),
     });
     const loggedIn = await loggedInResponse.json();
-    onSubmitProps.resetForm();
-    if (loggedIn) {
+    
+    if (loggedIn && !loggedIn.msg) {
+      onSubmitProps.resetForm();
+      props.setModal(false);
+     props.setToastName('login')
+      props.setShow(true)
+      
+      navigate("/home");  
       dispatch(
         setLogin({
           user: loggedIn.user,
           token: loggedIn.token,
         })
       );
-      navigate("/home");
+      
+      
+      
+    }
+    else{
+      setLoginErr(loggedIn.msg)
     }
   };
   
 
   const handleFormSubmit = async (values,onSubmitProps) => {
-    console.log(values);
+    
+   
     if (isLogin) await loginFunction(values, onSubmitProps);
     if (isRegister) await registerFunction(values, onSubmitProps);
   };
 
   const registerSchema = yup.object().shape({
     name: yup.string().required("Required Field"),
-    username: yup.string().required("Required Field"),
+    username: yup.string().required("Required Field")
+    // .test('is-unique', 'Username must be unique', async function(value) {
+      
+    //   try {
+    //     const existingUser = await fetch("http://localhost:3001/verify/username", {
+    //       method: "GET",
+    //       headers: { "Content-Type": "application/json" },
+    //       body: JSON.stringify({username : value}),
+    //     });
+    //     return !existingUser; // Return true if the username is unique, false otherwise
+    //   } catch (error) {
+    //     console.error(error);
+    //     return false; // Return false if an error occurs during the validation process
+    //   }
+    // }),
+    ,
     email : yup.string().email("Invalid Email").required("Required Field"),
     password : yup.string().required("Required Field"),
     
@@ -170,6 +228,8 @@ export const InfoForms = (props) => {
               </Form.Control.Feedback>
             </InputGroup>
           </Form.Group> </>: <></>}
+          {isRegister && !isUsernameUnique ? <p className='text-[#E72929] mt-[-13px] text-[0.9rem] mb-3'>Not Unique Username</p> : <></>}
+         
             
           
           
@@ -190,6 +250,9 @@ export const InfoForms = (props) => {
                 {errors.email}
               </Form.Control.Feedback>
             </Form.Group>
+            
+            {isRegister && !isEmailUnique ? <p className='text-[#E72929] mt-[-13px] text-[0.9rem] mb-3'>Not Unique Email</p> : <></>}
+
             <Form.Group as={Col} className='mb-3' controlId="validationFormik04">
               <Form.Label style={labelStyle}>Password</Form.Label>
               <Form.Control
@@ -205,6 +268,7 @@ export const InfoForms = (props) => {
                 {errors.password}
               </Form.Control.Feedback>
             </Form.Group>
+            {isLogin && loginErr ? <p className='text-[#E72929] mt-[-13px] text-[0.9rem] '>{loginErr}</p> : <></>} 
             
          
           <Button type="submit" className='bg-[#3861FB] w-full min-h-[3rem] mt-3'>{isLogin ? "Login" : "Sign Up"}</Button>

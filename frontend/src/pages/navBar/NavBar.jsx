@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import "./navBar.css"
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Modals from '../../components/modals/Modals';
 
 const navLinkStyle = {
   fontSize : "1.2rem",
 }
 
-const NavBar = () => {
+const NavBar = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [isLogin,setIsLogin] = useState(false);
 
@@ -15,9 +15,11 @@ const NavBar = () => {
   return (
     <>
     <nav className=''>
-      <a href="https://coincompute.netlify.app/">
+      
+      <a href="https://coincompute.netlify.app/"  className='flex items-center'>
       <h1 className='text-white whitespace-nowrap ml-[20px] font-[900] text-[1.4rem]'>CODE COMPUTE</h1>
       </a>
+      
     <input type="checkbox" id="sidebar-active"/>
     <label for="sidebar-active" class="open-sidebar-button ml-auto">
       <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
@@ -30,10 +32,10 @@ const NavBar = () => {
 
     
      <ul className='md:flex md:h-full md:ml-auto items-center mb-0'>
-      <NavLink to="/home">Home</NavLink>
-      <a href="about.html">Feeds</a> 
-      <a href="products.html">News</a>
-      <a href="blog.html">Blog</a>
+      <a href="/home" className='head'>Home</a>
+      <a href="/feeds" className='head'>Feeds</a> 
+      <a href="/news" className='head'>News</a>
+      
       <div className='flex md:h-[60%] ml-[20px] flex-row md:flex-col gap-2'>
       <button class="button-39 flex items-center"  role="button" onClick={() =>{setShowModal(true); setIsLogin(true)}} >Login</button>
       <button class="button-39  flex items-center " role="button" onClick={() =>{setShowModal(true); setIsLogin(false)} }>SignUp</button>
@@ -47,6 +49,9 @@ const NavBar = () => {
     show={showModal}
     onHide={() => setShowModal(false)}
     isLogin = {isLogin}
+    setModal = {setShowModal}
+    setShow = {props.setShow}
+    setToastName = {props.setToastName}
     />
     </>
   )
