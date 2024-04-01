@@ -52,7 +52,7 @@ export const InfoForms = (props) => {
    
 
     const savedUserResponse = await fetch(
-      "http://localhost:3001/auth/register",
+      "https://coincomputecommunity.onrender.com/auth/register",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
