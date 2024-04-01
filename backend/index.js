@@ -10,6 +10,10 @@ import path from "path"; //Helps to manage path
 import { fileURLToPath } from "url"; //Helps to set path
 import { register } from "./controllers/auth.js";
 import User from "./models/User.js";
+import { email, username } from "./controllers/verify.js";
+
+import verifyRoutes from "./routes/verify.js";
+import authRoutes from "./routes/auth.js";
 
 // CONFIGURATION
 
@@ -30,6 +34,9 @@ app.use(cors());
 // ROUTES
 app.post("/auth/register", register);
 
+//Router routes
+app.use("/verify", verifyRoutes);
+app.use("/auth", authRoutes);
 // MONGOOSE SETUP
 
 const PORT = process.env.PORT || 6001;
