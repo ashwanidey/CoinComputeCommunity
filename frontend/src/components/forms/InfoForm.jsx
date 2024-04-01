@@ -10,6 +10,9 @@ import { useDispatch } from "react-redux";
 import { setLogin } from '../../state';
 import { useNavigate } from "react-router-dom";
 
+const host  = "45.55.195.4"
+// const host = "localhost"
+
 
 
 
@@ -42,7 +45,7 @@ export const InfoForms = (props) => {
 
   const registerFunction = async (values, onSubmitProps) => {
 
-    const existingUserResponse = await fetch("http://localhost:3001/verify/username", {
+    const existingUserResponse = await fetch(`http://${host}:3001/verify/username`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: values.username }),
@@ -56,7 +59,7 @@ export const InfoForms = (props) => {
       }
       setIsUsernameUnique(existingUserData.isUnique)
 
-      const existingEmail = await fetch("http://localhost:3001/verify/email", {
+      const existingEmail = await fetch(`http://${host}:3001/verify/email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: values.email }),
@@ -81,7 +84,7 @@ export const InfoForms = (props) => {
 
     const savedUserResponse = await fetch(
       // "https://coincomputecommunity.onrender.com/auth/register  "
-      "http://localhost:3001/auth/register",
+      `http://${host}:3001/auth/register`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -100,7 +103,7 @@ export const InfoForms = (props) => {
   };
 
   const loginFunction = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
+    const loggedInResponse = await fetch(`http://${host}:3001/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
@@ -140,20 +143,7 @@ export const InfoForms = (props) => {
   const registerSchema = yup.object().shape({
     name: yup.string().required("Required Field"),
     username: yup.string().required("Required Field")
-    // .test('is-unique', 'Username must be unique', async function(value) {
-      
-    //   try {
-    //     const existingUser = await fetch("http://localhost:3001/verify/username", {
-    //       method: "GET",
-    //       headers: { "Content-Type": "application/json" },
-    //       body: JSON.stringify({username : value}),
-    //     });
-    //     return !existingUser; // Return true if the username is unique, false otherwise
-    //   } catch (error) {
-    //     console.error(error);
-    //     return false; // Return false if an error occurs during the validation process
-    //   }
-    // }),
+    
     ,
     email : yup.string().email("Invalid Email").required("Required Field"),
     password : yup.string().required("Required Field"),
