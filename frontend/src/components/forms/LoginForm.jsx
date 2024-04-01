@@ -21,27 +21,26 @@ const inputStyle = {
 
 
 function LoginForms() {
+  
+  const handleSubmit = async (values,onSubmitProps) => {
+
+  };
+
   const { Formik } = formik;
 
   const schema = yup.object().shape({
-    name: yup.string().required(),
-   
-    username: yup.string().required(),
+    
     email : yup.string().email().required(),
     password : yup.string().required(),
-    terms: yup.bool().required().oneOf([true], 'Terms must be accepted'),
+   
   });
 
   return (
     <Formik
       validationSchema={schema}
-      onSubmit={console.log}
+      onSubmit={handleSubmit}
       initialValues={{
-        name: '',
         
-        username: '',
-        email : '',
-        terms: false,
       }}
     >
       {({ handleSubmit, handleChange, values, touched, errors }) => (

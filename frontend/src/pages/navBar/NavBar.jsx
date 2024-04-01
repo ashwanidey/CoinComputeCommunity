@@ -45,7 +45,7 @@ const NavBar = () => {
     <Modals
     show={showModal}
     onHide={() => setShowModal(false)}
-    login = {isLogin}
+    isLogin = {isLogin}
     />
     </>
   )

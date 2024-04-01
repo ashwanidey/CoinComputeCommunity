@@ -21,27 +21,30 @@ const inputStyle = {
 
 
 function SignUpForm() {
+
+  const handleFormSubmit = async (values,onSubmitProps) => {
+
+  };
+
   const { Formik } = formik;
 
   const schema = yup.object().shape({
-    name: yup.string().required(),
-   
-    username: yup.string().required(),
-    email : yup.string().email().required(),
-    password : yup.string().required(),
-    terms: yup.bool().required().oneOf([true], 'Terms must be accepted'),
+    name: yup.string().required("Required Field"),
+    username: yup.string().required("Required Field"),
+    email : yup.string().email("Invalid Email").required("Required Field"),
+    password : yup.string().required("Required Field"),
+    
   });
 
   return (
     <Formik
       validationSchema={schema}
-      onSubmit={console.log}
+      onSubmit={handleFormSubmit}
       initialValues={{
         name: '',
-        
         username: '',
         email : '',
-        terms: false,
+        password : ''
       }}
     >
       {({ handleSubmit, handleChange, values, touched, errors }) => (
@@ -56,7 +59,7 @@ function SignUpForm() {
                 onChange={handleChange}
                 isInvalid={!!errors.username}
                 isValid={touched.name && !errors.name}
-                // className=' border-[#cfd6e4] px-[1rem] py-[18px] h-[56px]'
+                
                 style={inputStyle}
               />
               <Form.Control.Feedback type="invalid">
@@ -106,15 +109,15 @@ function SignUpForm() {
               <Form.Label style={labelStyle}>Password</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="State"
-                name="state"
-                value={values.state}
+                placeholder="Password"
+                name="password"
+                value={values.password}
                 onChange={handleChange}
-                isInvalid={!!errors.state}
+                isInvalid={!!errors.password}
                 style={inputStyle}
               />
               <Form.Control.Feedback type="invalid">
-                {errors.state}
+                {errors.password}
               </Form.Control.Feedback>
             </Form.Group>
             
