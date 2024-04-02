@@ -11,7 +11,7 @@ const SideBar = (props) => {
    }, []);
   return (
     <>
-    <div className='flex justify-between'>
+    <div className='flex justify-between lg:hidden'>
     <a href="https://coincompute.netlify.app/" class="flex items-center ps-4  p-2 mt-2 text-decoration-none">
          
          <span class="self-center text-[1.5rem] font-semibold whitespace-nowrap dark:text-white">COIN COMPUTE</span>
