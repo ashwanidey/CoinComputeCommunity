@@ -10,8 +10,9 @@ import { useDispatch } from "react-redux";
 import { setLogin } from '../../state';
 import { useNavigate } from "react-router-dom";
 
-const host  = "45.55.195.4"
-// const host = "localhost"
+// const host  = "45.55.195.4:3001"
+// const host = "localhost:3001"
+const host = "coincomputecommunity.onrender.com"
 
 
 
@@ -45,7 +46,7 @@ export const InfoForms = (props) => {
 
   const registerFunction = async (values, onSubmitProps) => {
 
-    const existingUserResponse = await fetch(`http://${host}:3001/verify/username`, {
+    const existingUserResponse = await fetch(`https://${host}/verify/username`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: values.username }),
@@ -59,7 +60,7 @@ export const InfoForms = (props) => {
       }
       setIsUsernameUnique(existingUserData.isUnique)
 
-      const existingEmail = await fetch(`http://${host}:3001/verify/email`, {
+      const existingEmail = await fetch(`https://${host}/verify/email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: values.email }),
@@ -84,7 +85,7 @@ export const InfoForms = (props) => {
 
     const savedUserResponse = await fetch(
       // "https://coincomputecommunity.onrender.com/auth/register  "
-      `http://${host}:3001/auth/register`,
+      `https://${host}/auth/register`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -103,7 +104,7 @@ export const InfoForms = (props) => {
   };
 
   const loginFunction = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch(`http://${host}:3001/auth/login`, {
+    const loggedInResponse = await fetch(`https://${host}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
