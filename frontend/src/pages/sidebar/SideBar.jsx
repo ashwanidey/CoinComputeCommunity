@@ -12,7 +12,7 @@ const SideBar = (props) => {
   return (
     <>
     <div className='flex justify-between lg:hidden'>
-    <a href="https://coincompute.netlify.app/" class="flex items-center ps-4  p-2 mt-2 text-decoration-none">
+    <a href="https://coincompute.netlify.app/" class="text-current flex items-center ps-4  p-2 mt-2 text-decoration-none">
          
          <span class="self-center text-[1.5rem] font-semibold whitespace-nowrap dark:text-white">COIN COMPUTE</span>
       </a>
@@ -26,7 +26,7 @@ const SideBar = (props) => {
 
 <aside id="cta-button-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full lg:translate-x-0" aria-label="Sidebar">
    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-   <a href="https://coincompute.netlify.app/" class="text-decoration-none flex items-center ps-2.5 mb-3 text-decoration-none">
+   <a href="https://coincompute.netlify.app/" class="text-current text-decoration-none flex items-center ps-2.5 mb-3 text-decoration-none">
          
          <span class="self-center text-[1.4rem] font-semibold whitespace-nowrap dark:text-white">COIN COMPUTE</span>
       </a>
