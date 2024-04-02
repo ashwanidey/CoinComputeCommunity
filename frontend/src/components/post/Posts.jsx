@@ -23,7 +23,7 @@ const Posts = (props) => {
         <div className='text-[#808A9D] md:text-[1rem] text-[0.8rem]'>@username</div>
         </div>
         
-        <div className='text-[#808A9D] md:ml-[-10px] ml-[-12px] md:text-[1rem] text-[0.8rem]'>2h ago</div>
+        <div className='text-[#808A9D] md:ml-[-10px] ml-[-12px] md:text-[1rem] text-[0.8rem]'>2h </div>
         <span class="bg-green-100 text-green-800 text-[0.9rem] font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Bullish</span>
         <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 ml-auto">Follow</button>
       </div>
