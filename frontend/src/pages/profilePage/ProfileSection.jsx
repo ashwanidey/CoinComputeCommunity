@@ -63,11 +63,11 @@ const ProfileSection = () => {
             </div>
             <div class="grid grid-rows-2 gap-y-4">
               <div class="grid-item pt-2">
-                <p className='font-[600] text-[1.5rem]  whitespace-nowrap'>Full Name</p>
-                <p><span >@</span>UserName</p>
+                <div className='font-[600] text-[1.5rem]  whitespace-nowrap'>Full Name</div>
+                <div><span >@</span>UserName</div>
                 <div className='flex sm:gap-2 sm:flex-row flex-col mt-2'>
-                  <p className='font-[600] flex gap-1'><span>0</span>Following</p>
-                  <p className='font-[600] flex gap-1'><span>0</span>Followers</p>
+                  <div className='font-[600] flex gap-1'><span>0</span>Following</div>
+                  <div className='font-[600] flex gap-1'><span>0</span>Followers</div>
                 </div>
                 </div>
               <div class="grid-item"></div>
