@@ -51,7 +51,7 @@ export const InfoForms = (props) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: values.username }),
       });
-      const   existingUserData = await existingUserResponse.json();
+      const existingUserData = await existingUserResponse.json();
       
       if (!existingUserData.isUnique) {
         // Formik.setFieldError('username', 'Username must be unique');
@@ -124,6 +124,8 @@ export const InfoForms = (props) => {
           token: loggedIn.token,
         })
       );
+
+      console.log(stat)
       
       
       

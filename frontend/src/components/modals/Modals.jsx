@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import LoginForms from '../forms/LoginForm';
-import "./modals.css"
-import SignUpForm from '../forms/SignUpForm';
+
 import { InfoForms } from '../forms/InfoForm';
 
 const Modals = (props) => {

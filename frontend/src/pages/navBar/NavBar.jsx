@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import "./navBar.css"
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Modals from '../../components/modals/Modals';
+import Dropdown from 'react-bootstrap/Dropdown';
+import { useSelector } from "react-redux";
+
 
 const navLinkStyle = {
   fontSize : "1.2rem",
@@ -10,11 +13,11 @@ const navLinkStyle = {
 const NavBar = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [isLogin,setIsLogin] = useState(false);
-
+  const token = useSelector((state) => state.token);
   
   return (
     <>
-    <nav className=''>
+    <nav className='z-50 w-full'>
       
       <a href="https://coincompute.netlify.app/"  className='flex items-center'>
       <h1 className='text-white whitespace-nowrap ml-[20px] font-[900] text-[1.4rem]'>CODE COMPUTE</h1>
@@ -37,6 +40,17 @@ const NavBar = (props) => {
       <a href="/news" className='head'>News</a>
       
       <div className='flex md:h-[60%] ml-[20px] flex-row md:flex-col gap-2'>
+        {token ? <Dropdown className="d-inline mx-2"  >
+        <Dropdown.Toggle id="dropdown-autoclose-true" className='bg-white text-black' >
+          PROFILE
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu className='w-[50%]'>
+          <Dropdown.Item href="/profilePage">My page</Dropdown.Item>
+          
+        </Dropdown.Menu>
+      </Dropdown>:<></>}
+      
       <button class="button-39 flex items-center"  role="button" onClick={() =>{setShowModal(true); setIsLogin(true)}} >Login</button>
       <button class="button-39  flex items-center " role="button" onClick={() =>{setShowModal(true); setIsLogin(false)} }>SignUp</button>
       </div>
