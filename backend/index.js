@@ -38,7 +38,9 @@ app.post("/auth/register", register);
 app.use("/verify", verifyRoutes);
 app.use("/auth", authRoutes);
 // MONGOOSE SETUP
-
+app.get("/keep-alive", (req, res) => {
+  res.send("Server is alive.");
+});
 const PORT = process.env.PORT || 6001;
 mongoose
   .connect(process.env.MONGO_URL)
@@ -48,5 +50,14 @@ mongoose
     /* ADD DATA ONE TIME */
     // User.insertMany(users);
     // Post.insertMany(posts);
+    setInterval(() => {
+      fetch("http://localhost:3001/keep-alive")
+        .then(() => {
+          console.log("Server pinged to prevent sleeping.");
+        })
+        .catch((error) => {
+          console.error("Error pinging server:", error);
+        });
+    }, 1200000);
   })
   .catch((error) => console.log(`${error} did not connect`));
