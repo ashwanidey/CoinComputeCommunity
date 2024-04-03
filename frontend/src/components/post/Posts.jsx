@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import profilePic from "../../../public/assets/pp/63351f969b613d345489037b.png"
+import { UserContext } from '../../context/UserContext'
 
 const Posts = (props) => {
+  const {isLoggedIn} = useContext(UserContext)
   const post = props.post
-  console.log(`../../assets/pp/${post.picturePath}`)
-  const image = `../../../public/assets/pp/${post.picturePath}`;
+  // console.log(`../../assets/pp/${post.picturePath}`)
+  const imageUrl = `https://raw.githubusercontent.com/ashwanidey/CoinComputeCommunity/main/frontend/public/assets/pp/${post.picturePath}`;
+  // const image = `../../../public/assets/pp/${post.picturePath}`;
   return (
 
     <>
@@ -12,12 +15,12 @@ const Posts = (props) => {
       <div className='flex gap-2 sm:gap-4 mb-3 items-center'  >
         <div className='md:w-[56px] md:h-[56px] w-[45px] h-[45px]'>
           <div className='w-full h-full rounded-full overflow-hidden'>
-          <img src={image} alt="" className="object-cover w-full h-full" />
+          <img src={imageUrl} alt="" className="object-cover w-full h-full" />
           </div>
           </div>
         <div className='flex flex-col '>
 
-        <a href={`/profilepage/${post.userId}`}>
+        <a href={`/profilepage/${post.userId}`} className='text-decoration-none'>
         <div className='font-[600] md:text-[1.1rem] flex items-center'>{post.name}
         <span class="inline-flex items-center justify-center w-6 h-6 me-2 text-sm font-semibold text-blue-800  rounded-full ml-1 ">
           <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">

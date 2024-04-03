@@ -10,8 +10,8 @@ export const UserProvider = ({children}) =>{
   const [isLogin,setIsLogin] = useState(false);
   const [isloading,setIsLoading] = useState(false);
 
-//  const host = "http://localhost:3001"
-const host = "https://coincomputecommunity.onrender.com"
+ const host = "http://localhost:3001"
+// const host = "https://coincomputecommunity.onrender.com"
   
 
   const saveUser = (user,token,isLoggedIn) => {
