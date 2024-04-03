@@ -33,7 +33,7 @@ const inputStyle = {
 
 
 export const InfoForms = (props) => {
-  const {setUser,setIsLoggedIn,saveUser,isloading,setIsLoading,isLogin,setIsLogin} = useContext(UserContext);
+  const {setUser,setIsLoggedIn,saveUser,isloading,setIsLoading,isLogin,setIsLogin,host} = useContext(UserContext);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
@@ -48,7 +48,7 @@ export const InfoForms = (props) => {
 
   const registerFunction = async (values, onSubmitProps) => {
 
-    const existingUserResponse = await fetch(`https://${host}/verify/username`, {
+    const existingUserResponse = await fetch(`${host}/verify/username`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: values.username }),
@@ -62,7 +62,7 @@ export const InfoForms = (props) => {
       }
       setIsUsernameUnique(existingUserData.isUnique)
 
-      const existingEmail = await fetch(`https://${host}/verify/email`, {
+      const existingEmail = await fetch(`${host}/verify/email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: values.email }),
@@ -87,7 +87,7 @@ export const InfoForms = (props) => {
 setIsLoading(true);
     const savedUserResponse = await fetch(
       // "https://coincomputecommunity.onrender.com/auth/register  "
-      `https://${host}/auth/register`,
+      `${host}/auth/register`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -108,7 +108,7 @@ setIsLoading(true);
 
   const loginFunction = async (values, onSubmitProps) => {
     setIsLoading(true);
-    const loggedInResponse = await fetch(`https://${host}/auth/login`, {
+    const loggedInResponse = await fetch(`${host}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),

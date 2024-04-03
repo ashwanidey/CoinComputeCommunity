@@ -9,6 +9,9 @@ export const UserProvider = ({children}) =>{
   const [showModal, setShowModal] = useState(false);
   const [isLogin,setIsLogin] = useState(false);
   const [isloading,setIsLoading] = useState(false);
+
+//  const host = "http://localhost:3001"
+const host = "https://coincomputecommunity.onrender.com"
   
 
   const saveUser = (user,token,isLoggedIn) => {
@@ -32,9 +35,10 @@ export const UserProvider = ({children}) =>{
    
     setIsLoggedIn(JSON.parse(localStorage.getItem("LoggedIn")))
     const loggedUser = JSON.parse(localStorage.getItem("user"));
-    const loggedToken = JSON.parse(localStorage.getItem("token"));
+    
     
     setUser(loggedUser)
+    setToken(JSON.parse(localStorage.getItem("token")))
     
     // if(token.length !== 0)
     // setToken(loggedToken)
@@ -45,7 +49,7 @@ export const UserProvider = ({children}) =>{
   // }, [isLoggedIn]);
   
   return (
-    <UserContext.Provider value = {{user,setUser,isLoggedIn,setIsLoggedIn,saveUser,deleteUser,token,setToken,showModal, setShowModal,isLogin,setIsLogin,isloading,setIsLoading}}>
+    <UserContext.Provider value = {{user,setUser,isLoggedIn,setIsLoggedIn,saveUser,deleteUser,token,setToken,showModal, setShowModal,isLogin,setIsLogin,isloading,setIsLoading,host}}>
       {children}
     </UserContext.Provider>
   )

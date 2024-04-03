@@ -23,7 +23,8 @@ function App() {
       <Routes>
       <Route path = "/" element = {<div></div>}></Route>
         <Route path = "/feeds" element = {<><Feeds/></>}></Route>
-        <Route path = "/profilepage" element = {<><ProfilePage/></>}></Route>
+        <Route path = "/home" element = {<><Test/></>}></Route>
+        <Route path = "/profilepage/:userId" element = {<><ProfilePage/></>}></Route>
       </Routes>
     </>
   )
