@@ -15,7 +15,7 @@ const FeedsForm = () => {
        </div>
        <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
 
-<ul class="grid  gap-2 grid-cols-2">
+<ul class="grid  gap-2 grid-cols-2 p-0 m-0">
     <li>
         <input type="radio" id="hosting-small" name="hosting" value="hosting-small" class="hidden peer" required />
         <label for="hosting-small" class=" inline-flex items-center justify-between w-full p-2 text-gray-500  border border-gray-200 rounded-2xl cursor-pointer group  peer-checked:bg-[#16C784] peer-checked:text-white hover:text-gray-600 ">                      
