@@ -8,7 +8,7 @@ export const ToastComp = (props) => {
     <ToastContainer
           className="p-3"
           position='middle-center'
-          style={{ zIndex: 10 }}
+          style={{ zIndex: 60 }}
         >
     <Toast onClose={props.onHide} show={props.show} delay={3000} autohide>
           <Toast.Header className=''>

@@ -5,10 +5,11 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import * as formik from 'formik';
 import * as yup from 'yup';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useDispatch } from "react-redux";
 import { setLogin } from '../../state';
 import { useNavigate } from "react-router-dom";
+import { UserContext } from '../../context/UserContext';
 
 // const host  = "45.55.195.4:3001"
 // const host = "localhost:3001"
@@ -32,6 +33,7 @@ const inputStyle = {
 
 
 export const InfoForms = (props) => {
+  const {setUser,setIsLoggedIn,saveUser} = useContext(UserContext);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [login,setLogin] = useState(props.isLogin);
@@ -111,21 +113,26 @@ export const InfoForms = (props) => {
     });
     const loggedIn = await loggedInResponse.json();
     
+    
     if (loggedIn && !loggedIn.msg) {
+      
+      setIsLoggedIn(true);
+      saveUser(loggedIn.user,loggedIn.token,true)
+      // dispatch(
+      //   setLogin({
+      //     user: loggedIn.user,
+      //     token: loggedIn.token,
+      //   })
+      // );
       onSubmitProps.resetForm();
       props.setModal(false);
-     props.setToastName('login')
+      props.setToastName('login')
       props.setShow(true)
       
       navigate("/home");  
-      dispatch(
-        setLogin({
-          user: loggedIn.user,
-          token: loggedIn.token,
-        })
-      );
+      
 
-      console.log(stat)
+      
       
       
       
