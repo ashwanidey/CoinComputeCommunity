@@ -9,6 +9,7 @@ import { useState } from 'react';
 import ProfilePage from './pages/profilePage/ProfilePage';
 import SideBar from './pages/sidebar/SideBar';
 import 'flowbite';
+import Feeds from './pages/feeds/FeedsPage';
 
 function App() {
   const [show,setShow] = useState(false);
@@ -21,7 +22,7 @@ function App() {
       <ToastComp show = {show} onHide = {() => setShow(false)} toastName = {toastName}/>
       <Routes>
       <Route path = "/" element = {<div></div>}></Route>
-        <Route path = "/home" element = {<><Test/></>}></Route>
+        <Route path = "/feeds" element = {<><Feeds/></>}></Route>
         <Route path = "/profilepage" element = {<><ProfilePage/></>}></Route>
       </Routes>
     </>

@@ -6,6 +6,9 @@ export const UserProvider = ({children}) =>{
   const [user,setUser] = useState([]);
   const [token,setToken] = useState("");
   const[isLoggedIn,setIsLoggedIn] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [isLogin,setIsLogin] = useState(false);
+  const [isloading,setIsLoading] = useState(false);
   
 
   const saveUser = (user,token,isLoggedIn) => {
@@ -42,7 +45,7 @@ export const UserProvider = ({children}) =>{
   // }, [isLoggedIn]);
   
   return (
-    <UserContext.Provider value = {{user,setUser,isLoggedIn,setIsLoggedIn,saveUser,deleteUser,token,setToken}}>
+    <UserContext.Provider value = {{user,setUser,isLoggedIn,setIsLoggedIn,saveUser,deleteUser,token,setToken,showModal, setShowModal,isLogin,setIsLogin,isloading,setIsLoading}}>
       {children}
     </UserContext.Provider>
   )
