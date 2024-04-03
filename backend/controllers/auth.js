@@ -15,6 +15,7 @@ export const register = async (req, res) => {
       username,
       email,
       password: passwordHash,
+      
     });
     // const newUser = new User({
     //   name: "John Doe",

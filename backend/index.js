@@ -11,9 +11,13 @@ import { fileURLToPath } from "url"; //Helps to set path
 import { register } from "./controllers/auth.js";
 import User from "./models/User.js";
 import { email, username } from "./controllers/verify.js";
+import { posts } from "./data/index.js";
+import Post from "./models/Posts.js";
 
 import verifyRoutes from "./routes/verify.js";
 import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
+import postRoutes from "./routes/posts.js";
 
 // CONFIGURATION
 
@@ -37,6 +41,8 @@ app.post("/auth/register", register);
 //Router routes
 app.use("/verify", verifyRoutes);
 app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
+app.use("/posts", postRoutes);
 // MONGOOSE SETUP
 app.get("/keep-alive", (req, res) => {
   res.send("Server is alive.");
