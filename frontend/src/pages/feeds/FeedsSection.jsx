@@ -47,7 +47,7 @@ const FeedsSection = () => {
     getPosts();
   },[])
 
-  console.log(posts)
+  // console.log(posts)
 
   return (
    <>
