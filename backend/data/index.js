@@ -51,6 +51,7 @@ export const posts = [
     // location: "New York, CA",
     description: "Some really long random description",
     picturePath: "1.jpg",
+    isBullish : 'true',
     // userPicturePath: "p3.jpeg",
     // likes: new Map([
     //   [userIds[0], true],
@@ -75,6 +76,7 @@ export const posts = [
 
     Today I'm excited to announce our acquisition of Chamber, a company on the forefront of applied cryptography. With our shared vision & resources, we intend to bring some amazing products to market soon!`,
     picturePath: "1.jpg",
+    isBullish : 'false',
     // userPicturePath: "p3.jpeg",
     // likes: new Map([
     //   [userIds[0], true],
@@ -97,6 +99,7 @@ export const posts = [
     description:
       "Another really long random description. This one is longer than the previous one.",
     picturePath: "2.jpg",
+    isBullish : 'false',
     // userPicturePath: "p6.jpeg",
     // likes: new Map([
     //   [userIds[7], true],
@@ -120,6 +123,7 @@ export const posts = [
     description:
       "This is the last really long random description. This one is longer than the previous one.",
     picturePath: "3.jpg",
+    isBullish : 'true',
     // userPicturePath: "p5.jpeg",
     // likes: new Map([
     //   [userIds[1], true],

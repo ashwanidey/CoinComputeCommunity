@@ -61,6 +61,7 @@ const image = `https://raw.githubusercontent.com/ashwanidey/CoinComputeCommunity
     setToken(JSON.parse(localStorage.getItem("token")))
     if(user && token)
     getUser();
+    // else deleteUser();
     // if(token.length !== 0)
     // setToken(loggedToken)
   },[isLoggedIn])

@@ -47,7 +47,7 @@ export const InfoForms = (props) => {
   const isRegister = !isLogin;
 
   const registerFunction = async (values, onSubmitProps) => {
-
+    
     const existingUserResponse = await fetch(`${host}/verify/username`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -120,12 +120,6 @@ setIsLoading(true);
       
       setIsLoggedIn(true);
       saveUser(loggedIn.user,loggedIn.token,true)
-      // dispatch(
-      //   setLogin({
-      //     user: loggedIn.user,
-      //     token: loggedIn.token,
-      //   })
-      // );
       onSubmitProps.resetForm();
       props.setModal(false);
       props.setToastName('login')

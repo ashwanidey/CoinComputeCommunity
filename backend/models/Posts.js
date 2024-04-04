@@ -25,10 +25,10 @@ const postSchema = mongoose.Schema(
       type: String,
       default : ""
     },
-    // isBullish:{
-    //   type : Boolean,
-    //   default: false
-    // },
+    isBullish:{
+      type : String,
+      default: ""
+    },
     // comments: {
     //   type: Array,
     //   default: [],

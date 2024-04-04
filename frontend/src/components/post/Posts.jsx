@@ -20,7 +20,7 @@ const Posts = (props) => {
       <div className='flex gap-2 sm:gap-4 mb-3 items-center'  >
         <div className='md:w-[56px] md:h-[56px] w-[45px] h-[45px]'>
           <div className='w-full h-full rounded-full overflow-hidden'>
-          <img src={post.picturePath.length === 0 ? imageUrl : imageUrl} alt="" className="object-cover w-full h-full" />
+          <img src={imageUrl} onError={(e) => {e.target.src = profilePic}} alt="" className="object-cover w-full h-full" />
           </div>
           </div>
         <div className='flex flex-col '>
@@ -42,7 +42,8 @@ const Posts = (props) => {
        
         
         <div className='text-[#808A9D] md:ml-[-10px] ml-[-12px] md:text-[1rem] text-[0.8rem]'>2h </div>
-        <span class="bg-green-100 text-green-800 text-[0.9rem] font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Bullish</span>
+        {post.isBullish === '' ? <span class="bg-white text-black-800 text-[0.9rem] font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Neutral</span> : (post.isBullish === 'true' ? <span class="bg-green-100 text-green-800 text-[0.9rem] font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Bullish</span> : <span class="bg-red-100 text-red-800 text-[0.9rem] font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-green-300">Bearish</span>)}
+       
         <FollowButton userId = {post.userId} />
       </div>
       <p className=''>{post.description}</p>
