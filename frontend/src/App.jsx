@@ -21,7 +21,7 @@ function App() {
       <SideBar setShow = {setShow} setToastName = {setToastName}/> 
       <ToastComp show = {show} onHide = {() => setShow(false)} toastName = {toastName}/>
       <Routes>
-      <Route path = "/" element = {<div></div>}></Route>
+      <Route path = "/" element = {<><Feeds/></>}></Route>
         <Route path = "/feeds" element = {<><Feeds/></>}></Route>
         <Route path = "/home" element = {<><Test/></>}></Route>
         <Route path = "/profilepage/:userId" element = {<><ProfilePage/></>}></Route>

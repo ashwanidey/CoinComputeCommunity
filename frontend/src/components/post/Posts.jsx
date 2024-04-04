@@ -3,11 +3,13 @@ import profilePic from "../../../public/assets/pp/63351f969b613d345489037b.png"
 import { UserContext } from '../../context/UserContext'
 
 const Posts = (props) => {
-  const {isLoggedIn} = useContext(UserContext)
+  const {isLoggedIn,image} = useContext(UserContext)
+  
   const post = props.post
+  // console.log(post)
   // console.log(`../../assets/pp/${post.picturePath}`)
-  const imageUrl = `https://raw.githubusercontent.com/ashwanidey/CoinComputeCommunity/main/frontend/public/assets/pp/${post.picturePath}`;
-  // const image = `../../../public/assets/pp/${post.picturePath}`;
+  // const imageUrl = `https://raw.githubusercontent.com/ashwanidey/CoinComputeCommunity/main/frontend/public/assets/pp/${post.picturePath}`;
+  const imageUrl = `${image}${post.picturePath}`;
   return (
 
     <>
@@ -15,7 +17,7 @@ const Posts = (props) => {
       <div className='flex gap-2 sm:gap-4 mb-3 items-center'  >
         <div className='md:w-[56px] md:h-[56px] w-[45px] h-[45px]'>
           <div className='w-full h-full rounded-full overflow-hidden'>
-          <img src={imageUrl} alt="" className="object-cover w-full h-full" />
+          <img src={post.picturePath.length === 0 ? imageUrl : imageUrl} alt="" className="object-cover w-full h-full" />
           </div>
           </div>
         <div className='flex flex-col '>

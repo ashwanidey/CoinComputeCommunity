@@ -6,6 +6,41 @@ const userIds = [
   new mongoose.Types.ObjectId(),
 ];
 
+export const users = [
+  
+  {
+    _id: userIds[0],
+    name: "Steve",
+    username: "Ralph",
+    email: "thataaa@gmail.com",
+    password: "$!FEAS@!O)_IDJda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
+    picturePath: "1.jpg",
+    
+    __v: 0,
+  },
+  
+  {
+    _id: userIds[1],
+    name: "Whatcha",
+    username: "Doing",
+    email: "whatchadoing@gmail.com",
+    password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
+    picturePath: "2.jpg",
+   
+    __v: 0,
+  },
+  {
+    _id: userIds[2],
+    name: "Jane",
+    username: "Doe",
+    email: "janedoe@gmail.com",
+    password: "$2b$10$dsasdgsagasda//G9JxQ4bQ8KXf4OAIe/X/AK9skyWUy",
+    picturePath: "3.jpg",
+    
+    __v: 0,
+  },
+]
+
 export const posts = [
   {
     _id: new mongoose.Types.ObjectId(),
@@ -15,6 +50,30 @@ export const posts = [
     username: "Ralph",
     // location: "New York, CA",
     description: "Some really long random description",
+    picturePath: "1.jpg",
+    // userPicturePath: "p3.jpeg",
+    // likes: new Map([
+    //   [userIds[0], true],
+    //   [userIds[2], true],
+    //   [userIds[3], true],
+    //   [userIds[4], true],
+    // ]),
+    // comments: [
+    //   "random comment",
+    //   "another random comment",
+    //   "yet another random comment",
+    // ],
+  },
+  {
+    _id: new mongoose.Types.ObjectId(),
+    userId: userIds[0],
+    name: "Steve",
+
+    username: "Ralph",
+    // location: "New York, CA",
+    description:  `Casa is emerging from bear market hibernation.
+
+    Today I'm excited to announce our acquisition of Chamber, a company on the forefront of applied cryptography. With our shared vision & resources, we intend to bring some amazing products to market soon!`,
     picturePath: "1.jpg",
     // userPicturePath: "p3.jpeg",
     // likes: new Map([
@@ -77,3 +136,5 @@ export const posts = [
     // ],
   },
 ]
+
+

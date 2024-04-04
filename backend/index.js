@@ -9,10 +9,12 @@ import morgan from "morgan";
 import path from "path"; //Helps to manage path
 import { fileURLToPath } from "url"; //Helps to set path
 import { register } from "./controllers/auth.js";
-import User from "./models/User.js";
+
 import { email, username } from "./controllers/verify.js";
-import { posts } from "./data/index.js";
+import { posts, users } from "./data/index.js";
+
 import Post from "./models/Posts.js";
+import User from "./models/User.js";
 
 import verifyRoutes from "./routes/verify.js";
 import authRoutes from "./routes/auth.js";

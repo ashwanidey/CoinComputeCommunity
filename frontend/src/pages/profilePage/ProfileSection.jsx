@@ -33,9 +33,11 @@ Join the fun and create your Beams today!` ,
  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis praesentium animi, veniam distinctio, deleniti doloremque vel ab aperiam ad non necessitatibus, earum magnam. Odio culpa esse nemo itaque adipisci quibusdam!"]
 
 const ProfileSection = () => {
-  const [user,setUser] = useState([]);
-  const {token,setToken,host} = useContext(UserContext);
+  const [user,setUser] = useState([0]);
+  const [posts,setPosts] = useState([0]);
+  const {token,setToken,host,image} = useContext(UserContext);
   const [loaded,setLoaded] = useState(false);
+  const [imageUrl,setImageUrl] = useState("");
   
   
   
@@ -44,24 +46,53 @@ const ProfileSection = () => {
 
 
   const getUser = async () => {
+    try {
+      const val = JSON.parse(localStorage.getItem("token"));
+      const response = await fetch(`${host}/users/${userId}`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${val}` },
+      });
+      const data = await response.json();
+      setUser(data);
+      setImageUrl(`${image}${data.picturePath}`);
+
+      const response1 = await fetch(`${host}/posts/${userId}`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${val}` },
+      });
+      const data1 = await response1.json();
+      setPosts(data1);
+      setLoaded(true);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+    
+  };
+
+  const getUserPosts = async () => {
+    // setLoaded(false)
     const val = await JSON.parse(localStorage.getItem("token"))
-    const response = await fetch(`${host}/users/${userId}`, {
+    const response = await fetch(`${host}/posts/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${val}` },
     });
     const data = await response.json();
-    setUser(data);
-    setLoaded(true);
-  };
+    setPosts(data);
+    
+    s
+  }
+
+  // if(!posts) return null;
 
   useEffect(() => {
     getUser();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    // getUserPosts();
+  }, []); 
 
-  
+  // console.log(posts)
   return (
     <>
-    {loaded && user && !user.message ? 
+    {(loaded)  ? 
     <div>
     <h2 className='font-[700] text-[2rem] mb-[24px] p-[8px]'>Profile</h2>
     <div>
@@ -80,7 +111,7 @@ const ProfileSection = () => {
             rounded-full bg-white overflow-hidden p-[4px]'>
               <span className='w-[110px] h-[110px]'>
               <div className='rounded-full w-full h-full overflow-hidden'>
-                <img src={!user.picturepath ?defaultpp : profilePic} alt="" className="object-cover w-full h-full" />
+                <img src={user.picturePath.length === 0 ? defaultpp : imageUrl} alt="" className="object-cover w-full h-full" />
               </div>
               </span>
             </div>
@@ -129,14 +160,14 @@ const ProfileSection = () => {
   </ul>
 </div>
 <div id="default-styled-tab-content">
-  <div class="hidden " id="styled-profile" role="tabpanel" aria-labelledby="profile-tab">
-    {/* {data1.map(dataw => {
+  {/* <div class="hidden " id="styled-profile" role="tabpanel" aria-labelledby="profile-tab"> */}
+    {posts.map(data => {
       return (
-    <Posts />
+    <Posts post={data}/>
       )
-    })} */}
+    })}
       
-  </div>
+  {/* </div> */}
   {/* <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
       <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
   </div>
@@ -151,7 +182,9 @@ const ProfileSection = () => {
           
         </div>
     </div>
-  </div>:<>
+  </div>
+  :
+  <>
   <div className='flex justify-center '>
   <h1 class="flex items-center md:text-5xl  text-3xl font-extrabold dark:text-white whitespace-nowrap">
   <span class="bg-blue-100 text-blue-800 text-2xl font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-2 ">404 </span>User Not Found
