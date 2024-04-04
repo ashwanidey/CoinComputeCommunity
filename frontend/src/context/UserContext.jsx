@@ -10,10 +10,10 @@ export const UserProvider = ({children}) =>{
   const [isLogin,setIsLogin] = useState(false);
   const [isloading,setIsLoading] = useState(false);
 
- const host = "http://localhost:3001"
-// const host = "https://coincomputecommunity.onrender.com"
-// const image = `https://raw.githubusercontent.com/ashwanidey/CoinComputeCommunity/main/frontend/public/assets/pp/`;
-const image = `../../../public/assets/pp/`
+//  const host = "http://localhost:3001"
+const host = "https://coincomputecommunity.onrender.com"
+const image = `https://raw.githubusercontent.com/ashwanidey/CoinComputeCommunity/main/frontend/public/assets/pp/`;
+// const image = `../../../public/assets/pp/`
   
 
   const saveUser = (user,token,isLoggedIn) => {
