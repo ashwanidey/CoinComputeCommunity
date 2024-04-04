@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import profilePic from "../../../public/assets/pp/63351f969b613d345489037b.png"
 import { UserContext } from '../../context/UserContext'
 
 const Posts = (props) => {
   const {isLoggedIn,image} = useContext(UserContext)
+  // const [post,setPost] = useState([])
   
   const post = props.post
   // console.log(post)
@@ -13,6 +14,7 @@ const Posts = (props) => {
   return (
 
     <>
+    {/* {post.length !== 0 ?  */}
     <div className='mt-3 md:p-4 p-2 rounded-lg bg-gray-50 dark:bg-gray-800'>
       <div className='flex gap-2 sm:gap-4 mb-3 items-center'  >
         <div className='md:w-[56px] md:h-[56px] w-[45px] h-[45px]'>
@@ -43,7 +45,10 @@ const Posts = (props) => {
         <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 ml-auto">Follow</button>
       </div>
       <p className=''>{post.description}</p>
-    </div>
+    </div> 
+    {/* : <>
+    <p className='text-6xl'>No Posts</p></>} */}
+    
     </>
   )
 }
