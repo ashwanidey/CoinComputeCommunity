@@ -31,6 +31,24 @@ const image = `https://raw.githubusercontent.com/ashwanidey/CoinComputeCommunity
     localStorage.setItem('token', JSON.stringify(""));
     localStorage.setItem('LoggedIn',!isLoggedIn);
   }
+
+  const getUser = async() => {
+    const response = await fetch(`${host}/users/${user._id}`,
+      {
+        method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            
+          },
+      })
+
+      const data = await response.json();
+      
+      localStorage.setItem('user', JSON.stringify(data));
+      setUser(data)
+  }
+
+  
   
 
   useEffect(()=>{
@@ -41,7 +59,8 @@ const image = `https://raw.githubusercontent.com/ashwanidey/CoinComputeCommunity
     
     setUser(loggedUser)
     setToken(JSON.parse(localStorage.getItem("token")))
-    
+    if(user && token)
+    getUser();
     // if(token.length !== 0)
     // setToken(loggedToken)
   },[isLoggedIn])

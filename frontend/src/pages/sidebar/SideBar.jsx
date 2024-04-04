@@ -3,12 +3,13 @@ import 'flowbite';
 import Modals from '../../components/modals/Modals';
 import { initFlowbite } from "flowbite";
 import { UserContext } from '../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const SideBar = (props) => {
   
-  
+  const navigate = useNavigate()
   const {isLoggedIn,setIsLoggedIn,setUser,deleteUser,showModal, setShowModal,isLogin,setIsLogin,user} = useContext(UserContext)
   
   useEffect(() => {
@@ -114,7 +115,8 @@ const SideBar = (props) => {
             </a>  */}
             <button type="button" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 bottom-0 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onClick={()=>{
                setIsLoggedIn(false);
-               deleteUser()}}>Log Out</button>
+               deleteUser()
+               navigate("/feeds")}}>Log Out</button>
             </li>
             
             </>}
