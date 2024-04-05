@@ -4,44 +4,58 @@ import defaultpp from "../../../public/assets/pp/63351f969b613d345489037b.png"
 import Posts from '../../components/post/Posts'
 import  'flowbite'
 import { useParams } from "react-router-dom";
+
 import { UserContext } from '../../context/UserContext';
-
-const data1 = [`
-Enjin
-@enjin
-In today’s featured Beam, the Enjineers made their way to Calvary Pentecostal Church, Ontario, Canada for a children’s digital Easter egg hunt! 🐰🥚
+import { initFlowbite } from 'flowbite';
+import ProfileModal from './ProfileModal';
 
 
-Beam is the ultimate airdrop distribution tool to unleash NFTs and rewards, friendly enough for your kids! 💜
-
-
-Whether you’re at Church or in the Multiverse, Beam delivers like no other:
-
-
-🟣 QR codes to enable mass distribution of digital assets online and IRL.
-
-
-🟣 Scan-to-claim technology where anyone with a smartphone can claim NFTs.
-
-
-🟣 Built-in conditional claims to target your most loyal players and holders.
-
-
-And it’s only just begun. 🔥
-Join the fun and create your Beams today!` ,
- "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis praesentium animi, veniam distinctio, deleniti doloremque vel ab aperiam ad non necessitatibus, earum magnam. Odio culpa esse nemo itaque adipisci quibusdam!",
- "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis praesentium animi, veniam distinctio, deleniti doloremque vel ab aperiam ad non necessitatibus, earum magnam. Odio culpa esse nemo itaque adipisci quibusdam!"]
 
 const ProfileSection = () => {
+  
   const [user,setUser] = useState([0]);
   const [posts,setPosts] = useState([0]);
-  const {token,setToken,host,image} = useContext(UserContext);
+  const {token,setToken,host,image,setShowProfileModal,showProfileModal} = useContext(UserContext);
+  const [isFollowers,setIsFollowers] = useState(false);
   const [loaded,setLoaded] = useState(false);
   const [imageUrl,setImageUrl] = useState("");
-  
-  
-  
   const { userId } = useParams();
+
+
+  const [followers,setFollowers] = useState(null);
+  const [isloading,setIsLoading] = useState(false);
+
+  const getFollowers = async () => {
+    setIsLoading(true);
+    const response = await fetch(`${host}/users/followers/${userId}`,{
+      method:"GET",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+
+    const data = await response.json();
+    setFollowers(data);
+    console.log(followers);
+    setIsLoading(false);
+  }
+
+
+  const getFollowing = async () => {
+    setIsLoading(true);
+    const response = await fetch(`${host}/users/following/${userId}`,{
+      method:"GET",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+
+    const data = await response.json();
+    setFollowers(data);
+    console.log(followers);
+    setIsLoading(false);
+  }
+  
+  
+  
+  
+  
  
 
 
@@ -128,8 +142,15 @@ const ProfileSection = () => {
               <div className='font-[600] text-[1.5rem]  whitespace-nowrap'>{user.name}</div>
               <div><span >@</span>{user.username}</div>
               <div className='flex sm:gap-2 sm:flex-row flex-col mt-2'>
-                <div className='font-[600] flex gap-1'><span>{user.following.length}</span>Following</div>
-                <div className='font-[600] flex gap-1'><span>{user.followers.length}</span>Followers</div>
+                
+                
+
+
+
+
+
+                <button className='font-[600] flex gap-1' onClick={()=> {setShowProfileModal(true);setIsFollowers(false);setFollowers(null);getFollowing()}}><span>{user.following.length}</span>Following</button>
+                <button className='font-[600] flex gap-1' onClick={()=> {setShowProfileModal(true);setIsFollowers(true);setFollowers(null);getFollowers()}}><span>{user.followers.length}</span>Followers</button>
               </div>
               </div>
             <div class="grid-item"></div>
@@ -182,7 +203,9 @@ const ProfileSection = () => {
           
         </div>
     </div>
+    <ProfileModal show = {showProfileModal} onHide = {() => setShowProfileModal(false)} isFollowers = {isFollowers} userId = {userId} followers = {followers}/>
   </div>
+  
   :
   <>
   <div className='flex justify-center '>
@@ -195,7 +218,11 @@ const ProfileSection = () => {
     </svg>
     <span class="sr-only">Loading...</span>
 </div>
-  </h1></div></>}
+  </h1>
+  </div>
+  
+  
+  </>}
     
     </>
   )

@@ -7,6 +7,7 @@ export const UserProvider = ({children}) =>{
   const [token,setToken] = useState("");
   const[isLoggedIn,setIsLoggedIn] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showProfileModal, setShowProfileModal] = useState(false);
   const [isLogin,setIsLogin] = useState(false);
   const [isloading,setIsLoading] = useState(false);
 
@@ -72,7 +73,7 @@ const admin = "660e33915c29ada4e61cd669";
   // }, [isLoggedIn]);
   
   return (
-    <UserContext.Provider value = {{user,setUser,isLoggedIn,setIsLoggedIn,saveUser,deleteUser,token,setToken,showModal, setShowModal,isLogin,setIsLogin,isloading,setIsLoading,host,image,admin}}>
+    <UserContext.Provider value = {{user,setUser,isLoggedIn,setIsLoggedIn,saveUser,deleteUser,token,setToken,showModal, setShowModal,isLogin,setIsLogin,isloading,setIsLoading,host,image,admin,showProfileModal, setShowProfileModal}}>
       {children}
     </UserContext.Provider>
   )

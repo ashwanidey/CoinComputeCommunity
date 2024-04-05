@@ -10,6 +10,56 @@ export const getUser = async (req, res) => {
   }
 };
 
+export const getUserFollowers = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(id);
+
+
+    const followers = await Promise.all(
+      user.followers.map((id) => User.findById(id))
+    );
+
+    const formattedFollowers = followers.map(
+      ({ _id, name, username,  picturePath }) => {
+        return { _id, name, username,  picturePath};
+      }
+    );
+    res.status(200).json(formattedFollowers);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
+
+
+export const getUserFollowing = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(id);
+    
+
+
+    const following = await Promise.all(
+      user.following.map((id) => User.findById(id))
+    );
+
+    if(!following){
+      res.status(404).json({message : `${id}`})
+    }
+
+    const formattedFollowing = following.map(
+      ({ _id, name, username,  picturePath }) => {
+        return { _id, name, username,  picturePath};
+      }
+    );
+    res.status(200).json(formattedFollowing);
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
+
+
+
 export const getLoggedUser = async (req, res) => {
   try {
     const { id } = req.params;
