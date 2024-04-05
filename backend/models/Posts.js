@@ -29,6 +29,10 @@ const postSchema = mongoose.Schema(
       type : String,
       default: ""
     },
+    likes: {
+      type: Map,
+      of: Boolean,
+    },
     // comments: {
     //   type: Array,
     //   default: [],

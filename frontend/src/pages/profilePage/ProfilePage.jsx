@@ -16,6 +16,6 @@ const ProfilePage = () => {
   )
 }
 
-// /bg-[#cfd6e4]
+
 
 export default ProfilePage

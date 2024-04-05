@@ -76,12 +76,12 @@ export const posts = [
     picturePath: "1.jpg",
     isBullish : 'true',
     // userPicturePath: "p3.jpeg",
-    // likes: new Map([
-    //   [userIds[0], true],
-    //   [userIds[2], true],
-    //   [userIds[3], true],
-    //   [userIds[4], true],
-    // ]),
+    likes: new Map([
+      [userIds[0], true],
+      [userIds[2], true],
+      [userIds[3], true],
+      [userIds[4], true],
+    ]),
     // comments: [
     //   "random comment",
     //   "another random comment",
@@ -101,12 +101,12 @@ export const posts = [
     picturePath: "1.jpg",
     isBullish : 'false',
     // userPicturePath: "p3.jpeg",
-    // likes: new Map([
-    //   [userIds[0], true],
-    //   [userIds[2], true],
-    //   [userIds[3], true],
-    //   [userIds[4], true],
-    // ]),
+    likes: new Map([
+      [userIds[0], true],
+      [userIds[2], true],
+      [userIds[3], true],
+      [userIds[4], true],
+    ]),
     // comments: [
     //   "random comment",
     //   "another random comment",
@@ -124,12 +124,12 @@ export const posts = [
     picturePath: "2.jpg",
     isBullish : 'false',
     // userPicturePath: "p6.jpeg",
-    // likes: new Map([
-    //   [userIds[7], true],
-    //   [userIds[4], true],
-    //   [userIds[1], true],
-    //   [userIds[2], true],
-    // ]),
+    likes: new Map([
+      [userIds[0], true],
+      [userIds[4], true],
+      [userIds[1], true],
+      [userIds[2], true],
+    ]),
     // comments: [
     //   "one more random comment",
     //   "and another random comment",
@@ -147,12 +147,12 @@ export const posts = [
     picturePath: "3.jpg",
     isBullish : 'true',
     // userPicturePath: "p5.jpeg",
-    // likes: new Map([
-    //   [userIds[1], true],
-    //   [userIds[6], true],
-    //   [userIds[3], true],
-    //   [userIds[5], true],
-    // ]),
+    likes: new Map([
+      [userIds[1], true],
+      [userIds[0], true],
+      [userIds[3], true],
+      [userIds[2], true],
+    ]),
     // comments: [
     //   "one more random comment",
     //   "I lied, one more random comment",
@@ -176,12 +176,12 @@ export const posts = [
     picturePath: "4.jpg",
     isBullish : '',
     // userPicturePath: "p5.jpeg",
-    // likes: new Map([
-    //   [userIds[1], true],
-    //   [userIds[6], true],
-    //   [userIds[3], true],
-    //   [userIds[5], true],
-    // ]),
+    likes: new Map([
+      [userIds[1], true],
+      [userIds[2], true],
+      [userIds[3], true],
+      [userIds[0], true],
+    ]),
     // comments: [
     //   "one more random comment",
     //   "I lied, one more random comment",
@@ -204,12 +204,12 @@ export const posts = [
     picturePath: "5.png",
     isBullish : '',
     // userPicturePath: "p5.jpeg",
-    // likes: new Map([
-    //   [userIds[1], true],
-    //   [userIds[6], true],
-    //   [userIds[3], true],
-    //   [userIds[5], true],
-    // ]),
+    likes: new Map([
+      [userIds[1], true],
+      [userIds[4], true],
+      [userIds[3], true],
+      [userIds[0], true],
+    ]),
     // comments: [
     //   "one more random comment",
     //   "I lied, one more random comment",
