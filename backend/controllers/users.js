@@ -26,6 +26,10 @@ export const addRemoveFollowing = async (req, res) => {
     const user = await User.findById(id);
     const friend = await User.findById(followingId);
 
+    if(!user){
+      res.status(404).json({message : "Not found"})
+    }
+
     if (user.following.includes(followingId)) {
       user.following = user.following.filter((id) => id !== followingId);
       friend.followers = friend.followers.filter((id) => id !== id);
@@ -36,16 +40,16 @@ export const addRemoveFollowing = async (req, res) => {
     await user.save();
     await friend.save();
 
-    const following = await Promise.all(
-      user.following.map((id) => User.findById(id))
-    );
-    const formattedFollowing = following.map(
-      ({ _id, name, username, picturePath }) => {
-        return { _id, name, username, picturePath };
-      }
-    );
+    // const following = await Promise.all(
+    //   user.following.map((id) => User.findById(id))
+    // );
+    // const formattedFollowing = following.map(
+    //   ({ _id, name, username, picturePath }) => {
+    //     return { _id, name, username, picturePath };
+    //   }
+    // );
 
-    res.status(200).json(formattedFollowing);
+    res.status(200).json({message : "done"});
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
