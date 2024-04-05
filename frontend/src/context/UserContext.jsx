@@ -10,8 +10,8 @@ export const UserProvider = ({children}) =>{
   const [isLogin,setIsLogin] = useState(false);
   const [isloading,setIsLoading] = useState(false);
 
- const host = "http://localhost:3001"
-// const host = "https://coincomputecommunity.onrender.com"
+//  const host = "http://localhost:3001"
+const host = "https://coincomputecommunity.onrender.com"
 const image = `https://raw.githubusercontent.com/ashwanidey/CoinComputeCommunity/main/frontend/public/assets/pp/`;
 const admin = "660e33915c29ada4e61cd669";
 // const image = `../../../public/assets/pp/`
