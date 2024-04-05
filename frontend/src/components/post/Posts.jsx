@@ -4,14 +4,22 @@ import { UserContext } from '../../context/UserContext'
 import FollowButton from '../FollowButton'
 
 const Posts = (props) => {
-  const {isLoggedIn,image} = useContext(UserContext)
+  const {isLoggedIn,image,user,token,host,admin} = useContext(UserContext)
   // const [post,setPost] = useState([])
   
   const post = props.post
-  // console.log(post)
-  // console.log(`../../assets/pp/${post.picturePath}`)
-  // const imageUrl = `https://raw.githubusercontent.com/ashwanidey/CoinComputeCommunity/main/frontend/public/assets/pp/${post.picturePath}`;
   const imageUrl = `${image}${post.picturePath}`;
+
+  const deleteUser = async() => {
+    const response = await fetch(`${host}/posts/${post._id}`,{
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    const posts = await response.json();
+    props.setPosts(posts)
+    // window.location.reload();
+  }
+  
   return (
 
     <>
@@ -46,7 +54,12 @@ const Posts = (props) => {
        
         <FollowButton userId = {post.userId} />
       </div>
+      <div className='flex'> 
       <p className=''>{post.description}</p>
+      {isLoggedIn && (user._id === admin || user._id === post.userId ) && <button className='ml-auto' onClick={()=>{deleteUser();}}><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"  viewBox="0 0 24 24" className='w-5 h-5 text-gray-800 ' fill='currentcolor'>
+<path d="M 10.806641 2 C 10.289641 2 9.7956875 2.2043125 9.4296875 2.5703125 L 9 3 L 4 3 A 1.0001 1.0001 0 1 0 4 5 L 20 5 A 1.0001 1.0001 0 1 0 20 3 L 15 3 L 14.570312 2.5703125 C 14.205312 2.2043125 13.710359 2 13.193359 2 L 10.806641 2 z M 4.3652344 7 L 5.8925781 20.263672 C 6.0245781 21.253672 6.877 22 7.875 22 L 16.123047 22 C 17.121047 22 17.974422 21.254859 18.107422 20.255859 L 19.634766 7 L 4.3652344 7 z"></path>
+</svg></button>}
+</div>
     </div> 
     {/* : <>
     <p className='text-6xl'>No Posts</p></>} */}

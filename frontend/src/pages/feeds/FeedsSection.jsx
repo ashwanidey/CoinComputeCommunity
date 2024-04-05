@@ -2,31 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import FeedsForm from './FeedsForm'
 import Posts from '../../components/post/Posts'
 import { UserContext } from '../../context/UserContext'
-const data = [`
-Enjin
-@enjin
-In today’s featured Beam, the Enjineers made their way to Calvary Pentecostal Church, Ontario, Canada for a children’s digital Easter egg hunt! 🐰🥚
-
-
-Beam is the ultimate airdrop distribution tool to unleash NFTs and rewards, friendly enough for your kids! 💜
-
-
-Whether you’re at Church or in the Multiverse, Beam delivers like no other:
-
-
-🟣 QR codes to enable mass distribution of digital assets online and IRL.
-
-
-🟣 Scan-to-claim technology where anyone with a smartphone can claim NFTs.
-
-
-🟣 Built-in conditional claims to target your most loyal players and holders.
-
-
-And it’s only just begun. 🔥
-Join the fun and create your Beams today!` ,
- "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis praesentium animi, veniam distinctio, deleniti doloremque vel ab aperiam ad non necessitatibus, earum magnam. Odio culpa esse nemo itaque adipisci quibusdam!",
- "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis praesentium animi, veniam distinctio, deleniti doloremque vel ab aperiam ad non necessitatibus, earum magnam. Odio culpa esse nemo itaque adipisci quibusdam!"]
 
 const FeedsSection = () => {
 
@@ -58,7 +33,7 @@ const FeedsSection = () => {
 
     {posts.map(data => {
         return (
-      <Posts post = {data}/>
+      <Posts post = {data} setPosts ={(data) => setPosts(data)}/>
         )
       })}
 
