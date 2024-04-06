@@ -10,6 +10,37 @@ export const getFeedPosts = async (req, res) => {
   }
 };
 
+export const getFollowingPosts = async (req, res) => {
+  try {
+    const {userId} = req.params;
+    const user = await User.findById(userId);
+    const followingList = user.following;
+    // res.status(200).json({msg : `${followingList}`});
+
+    const following = await Promise.all(
+      user.following.map(async (id) => {
+        const posts = await Post.find({ userId: id });
+        return posts.map(({ _id, name, username, description, isBullish, likes, picturePath }) => {
+          return { _id, name, username, description, isBullish, likes, picturePath };
+        });
+      })
+    );
+    
+    // Flatten the array of arrays
+    const formattedFriends = following.flat();
+    
+
+    
+
+    // const posts = await Post.find({ userId: { $in: followingList } });
+    res.status(200).json(formattedFriends );
+  } catch (err) {
+    res.status(404).json({ message: err.message });
+  }
+};
+
+
+
 export const getUserPosts = async (req, res) => {
   try {
     const { userId } = req.params;

@@ -4,10 +4,14 @@ import PostFooter from "./PostFooter";
 import PostHeader from "./PostHeader";
 
 const Posts = (props) => {
-  const { isLoggedIn, image, user, token, host } = useContext(UserContext);
-
-  const [post,setPost] = useState(props.post);
   
+  const { isLoggedIn, image, user, token, host, setFlicker, flicker } =
+    useContext(UserContext);
+   
+  const [post, setPost] = useState(props.post);
+  // console.log(post)
+  
+
   const imageUrl = `${image}${post.picturePath}`;
 
   const deleteUser = async () => {
@@ -16,32 +20,37 @@ const Posts = (props) => {
       headers: { Authorization: `Bearer ${token}` },
     });
     const posts = await response.json();
+    
     props.setPosts(posts);
+    
+    window.location.reload()
+    
+    
+    
   };
 
-  useEffect(()=>{
-
-  },[post])
-
-  
+  useEffect(() => {}, [post]);
 
   return (
     <>
       <div className="mt-3 md:p-4 p-2 rounded-lg bg-gray-50 dark:bg-gray-800">
         {/* Header */}
-        <PostHeader imageUrl={imageUrl} post={post} />
+        <PostHeader
+          imageUrl={imageUrl}
+          post={post}
+          isFollowing={props.isFollowing}
+        />
 
         {/* Description */}
         <p className="">{post.description}</p>
 
-        {/* Footer */}
         <PostFooter
           isLoggedIn={isLoggedIn}
           postUserId={post.userId}
-          userId={user._id}
+          // userId={user._id}
           deleteUser={deleteUser}
-          post = {post}
-          setPost = {(data) => setPost(data)}
+          post={post}
+          setPost={(data) => setPost(data)}
         />
       </div>
     </>

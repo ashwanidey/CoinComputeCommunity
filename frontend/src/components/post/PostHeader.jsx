@@ -2,7 +2,7 @@ import React from "react";
 import profilePic from "../../../public/assets/pp/63351f969b613d345489037b.png";
 import FollowButton from "../FollowButton";
 
-const PostHeader = ({ post, imageUrl }) => {
+const PostHeader = ({ post, imageUrl,isFollowing }) => {
   return (
     <div className="flex gap-2 sm:gap-4 mb-3 items-center">
       <div className="md:w-[56px] md:h-[56px] w-[45px] h-[45px]">
@@ -66,7 +66,7 @@ const PostHeader = ({ post, imageUrl }) => {
         </span>
       )}
 
-      <FollowButton userId={post.userId} />
+      {!isFollowing && <FollowButton userId={post.userId} />}
     </div>
   );
 };

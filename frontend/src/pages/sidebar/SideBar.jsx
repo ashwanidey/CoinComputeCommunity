@@ -93,7 +93,6 @@ const SideBar = (props) => {
             <span class="sr-only">Close menu</span>
           </button>
           <ul class="space-y-2 font-medium pl-0">
-
             <li>
               <a
                 href="/feeds"
@@ -195,7 +194,7 @@ const SideBar = (props) => {
               <>
                 <li>
                   <a
-                    href={`/profilepage/${user._id}`}
+                    href={`/profilepage/${user && user._id}`}
                     class="text-decoration-none flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                   >
                     <svg

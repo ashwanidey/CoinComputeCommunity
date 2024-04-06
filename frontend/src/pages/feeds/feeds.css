@@ -1,0 +1,27 @@
+.nav-link{
+  margin-bottom: 1rem;
+    font-size: 1.875rem; /* Equivalent to text-3xl */
+    font-weight: 800; /* Equivalent to font-extrabold */
+    line-height: 1; /* Equivalent to leading-none */
+    letter-spacing: -0.025em; /* Equivalent to tracking-tight */
+    color: #1a202c; /* Equivalent to text-gray-900 */
+    /* Responsive sizes */
+    @media (min-width: 768px) {
+        font-size: 3rem; /* Equivalent to md:text-5xl */
+    }
+    @media (min-width: 1024px) {
+        font-size: 2.25rem; /* Equivalent to lg:text-4xl */
+    }
+    /* Dark mode */
+    
+    margin-top: 0.75rem; /* Equivalent to mt-3 */
+    border : none;
+}
+
+.nav-tabs .nav-link {
+  border : none;
+}
+
+.nav-tabs{
+  border : none;
+}

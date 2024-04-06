@@ -10,11 +10,12 @@ export const UserProvider = ({children}) =>{
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [isLogin,setIsLogin] = useState(false);
   const [isloading,setIsLoading] = useState(false);
+  const [flicker,setFlicker] = useState(true);
 
 //  const host = "http://localhost:3001"
 const host = "https://coincomputecommunity.onrender.com"
 const image = `https://raw.githubusercontent.com/ashwanidey/CoinComputeCommunity/main/frontend/public/assets/pp/`;
-const admin = "660e33915c29ada4e61cd669";
+const admin = "66105e1c611c12c76ee19956";
 // const image = `../../../public/assets/pp/`
   
 
@@ -73,7 +74,7 @@ const admin = "660e33915c29ada4e61cd669";
   // }, [isLoggedIn]);
   
   return (
-    <UserContext.Provider value = {{user,setUser,isLoggedIn,setIsLoggedIn,saveUser,deleteUser,token,setToken,showModal, setShowModal,isLogin,setIsLogin,isloading,setIsLoading,host,image,admin,showProfileModal, setShowProfileModal}}>
+    <UserContext.Provider value = {{user,setUser,isLoggedIn,setIsLoggedIn,saveUser,deleteUser,token,setToken,showModal, setShowModal,isLogin,setIsLogin,isloading,setIsLoading,host,image,admin,showProfileModal, setShowProfileModal,flicker,setFlicker}}>
       {children}
     </UserContext.Provider>
   )

@@ -96,6 +96,10 @@ const ProfileSection = () => {
     // getUserPosts();
   }, []);
 
+  useEffect(()=>{
+
+  },[posts])
+
   // console.log(posts)
   return (
     <>
@@ -213,7 +217,11 @@ const ProfileSection = () => {
               <div id="default-styled-tab-content">
                 {/* <div class="hidden " id="styled-profile" role="tabpanel" aria-labelledby="profile-tab"> */}
                 {posts.map((data) => {
-                  return <Posts post={data} />;
+                  return <Posts post={data} setPosts = {(idata) => {
+                    // const formattedData = idata.filter(d => d.userId === user._id);
+                   
+                    setPosts(idata)
+                  }}/>;
                 })}
 
                 {/* </div> */}
