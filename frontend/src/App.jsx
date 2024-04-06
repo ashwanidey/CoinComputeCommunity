@@ -10,6 +10,7 @@ import ProfilePage from './pages/profilePage/ProfilePage';
 import SideBar from './pages/sidebar/SideBar';
 import 'flowbite';
 import Feeds from './pages/feeds/FeedsPage';
+import CommentsPage from './pages/comments/CommentsPage';
 
 function App() {
   const [show,setShow] = useState(false);
@@ -25,6 +26,7 @@ function App() {
         <Route path = "/feeds" element = {<><Feeds/></>}></Route>
         <Route path = "/home" element = {<><Test/></>}></Route>
         <Route path = "/profilepage/:userId" element = {<><ProfilePage/></>}></Route>
+        <Route path = "/comments/:postId" element = {<><CommentsPage/></>}></Route>
       </Routes>
     </>
   )
