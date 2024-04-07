@@ -1,5 +1,5 @@
 import React from 'react'
-import Post from '../../../../backend/models/Posts'
+
 import CommentsPost from './post/CommentsPost';
 
 const PostSection = ({post}) => {
