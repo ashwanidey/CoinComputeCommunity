@@ -45,11 +45,11 @@ const CommentsSection = () => {
       <mark class="px-2 text-white bg-gray-500 rounded dark:bg-blue-500">COMMENTS</mark>
       </h1>
 
-      {comments.map(comment=>{
+      {comments.length !== 0 ? comments.map(comment=>{
         return(
           <Comments comment = {comment}/>
         )
-      })}
+      }) : <div className="font-[500] text-[1.2rem]">No <span className="text-blue-500">Comments</span> on this post</div>}
       </div>
      
     </>

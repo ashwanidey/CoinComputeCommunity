@@ -52,3 +52,15 @@ export const createComment = async (req, res) => {
   }
 };
 
+
+export const deleteComment = async(req,res) => {
+  try{
+    const { id } = req.params;
+    const deletedComment = await Comment.deleteOne({ _id: id });
+
+    const Comments = await Comment.find()
+    res.status(201).json(Comments);
+  }catch (err) {
+    res.status(409).json({ message: err.message });
+  }
+}
