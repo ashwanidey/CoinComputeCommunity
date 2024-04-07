@@ -4,7 +4,7 @@ import Posts from "../../components/post/Posts";
 import { UserContext } from "../../context/UserContext";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import noFollowing from "../../../public/assets/no-post.png"
+import noFollowing from "../../../public/assets/no-post.png";
 import "./feeds.css";
 
 const FeedsSection = ({
@@ -57,7 +57,6 @@ const FeedsSection = ({
 
   // console.log(posts)
   useEffect(() => {}, [posts, followingPosts, isFollowing, posts.likes]);
-  
 
   return (
     <>
@@ -101,27 +100,31 @@ const FeedsSection = ({
         )}
       </div>
 
-      {isFollowing && (followingPosts.length !== 0 ?
-        followingPosts.map((data) => {
-          return (
-            <Posts
-              post={data}
-              setPosts={(data) => setFollowingPosts(data)}
-              isFollowing={isFollowing}
-            />
-          );
-        }) :
-        <div className="flex flex-col items-center w-full">
-          <div className="w-[40%] ">
-          <img src={noFollowing} alt="" className="overflow-hidden"/>
+      {isFollowing &&
+        (followingPosts.length !== 0 ? (
+          followingPosts.map((data) => {
+            return (
+              <Posts
+                post={data}
+                setPosts={(data) => setFollowingPosts(data)}
+                isFollowing={isFollowing}
+              />
+            );
+          })
+        ) : (
+          <div className="flex flex-col items-center w-full">
+            <div className="w-[40%] ">
+              <img src={noFollowing} alt="" className="overflow-hidden" />
+            </div>
+            <div class="text-4xl font-bold text-gray-800">Nothing here!</div>
+            <div class="md:text-lg text-md font-[600] text-blue-800 mt-2 text-center">
+              Go explore, follow some people and write some posts instead!
+            </div>
           </div>
-          <div class="text-4xl font-bold text-gray-800">Nothing here!</div>
-          <div class="text-lg font-[600] text-blue-800 mt-2">Go explore, follow some people and write some posts instead!</div>
-        </div>)}
-        
-      {!isFollowing && 
+        ))}
+
+      {!isFollowing &&
         posts.map((data) => {
-          
           return (
             <Posts
               post={data}
