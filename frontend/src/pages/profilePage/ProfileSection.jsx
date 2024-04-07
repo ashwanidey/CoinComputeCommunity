@@ -216,7 +216,7 @@ const ProfileSection = () => {
               </div>
               <div id="default-styled-tab-content">
                 {/* <div class="hidden " id="styled-profile" role="tabpanel" aria-labelledby="profile-tab"> */}
-                {posts.map((data) => {
+                {posts && posts.map((data) => {
                   return <Posts post={data} setPosts = {(idata) => {
                     // const formattedData = idata.filter(d => d.userId === user._id);
                    
