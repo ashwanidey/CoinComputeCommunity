@@ -14,7 +14,7 @@ const CommentsPostHeader = ({post}) => {
           <img
             src={imageUrl}
             onError={(e) => {
-              e.target.src = profilePic;
+              e.target.src = defaultpp;
             }}
             alt=""
             className="object-cover w-full h-full"

@@ -37,7 +37,7 @@ const Posts = (props) => {
         />
 
         <div>
-          <a href={`/postdetails/${post._id}`}>
+          <a href={`/postdetails/${post._id}`} className="text-decoration-none">
             {/* Description */}
             <p className="">{post.description}</p>
           </a>

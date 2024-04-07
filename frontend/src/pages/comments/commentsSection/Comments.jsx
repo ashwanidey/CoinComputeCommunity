@@ -25,8 +25,8 @@ const Comments = ({ comment }) => {
 
         <div>
           <a
-            href= ""
-            // {`/profilepage/${comment.userId}`}
+            href= 
+            {`/profilepage/${comment.userId}`}
             className="text-decoration-none"
           >
             <div className="flex ">

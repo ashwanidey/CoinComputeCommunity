@@ -64,7 +64,7 @@ const ProfileSection = () => {
       setUser(data);
       setImageUrl(`${image}${data.picturePath}`);
 
-      const response1 = await fetch(`${host}/posts/${userId}`, {
+      const response1 = await fetch(`${host}/posts/user/${userId}`, {
         method: "GET",
         headers: { Authorization: `Bearer ${val}` },
       });
@@ -79,7 +79,7 @@ const ProfileSection = () => {
   const getUserPosts = async () => {
     // setLoaded(false)
     const val = await JSON.parse(localStorage.getItem("token"));
-    const response = await fetch(`${host}/posts/${userId}`, {
+    const response = await fetch(`${host}/posts/user/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${val}` },
     });
@@ -216,7 +216,7 @@ const ProfileSection = () => {
               </div>
               <div id="default-styled-tab-content">
                 {/* <div class="hidden " id="styled-profile" role="tabpanel" aria-labelledby="profile-tab"> */}
-                {posts.map((data) => {
+                { posts.map((data) => {
                   return <Posts post={data} setPosts = {(idata) => {
                     // const formattedData = idata.filter(d => d.userId === user._id);
                    

@@ -23,3 +23,32 @@ export const getUserComments = async(req,res) => {
   }
 }
 
+export const createComment = async (req, res) => {
+  try {
+    const { description, isBullish, userId ,postId} = req.body;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: `${userId}` });
+    }
+
+    const newComment = new Comment({
+      userId,
+      postId,
+      name: user.name,    
+      username: user.username,
+      description,
+      userPicturePath: user.picturePath,
+      isBullish,
+      // picturePath,
+      likes: {},
+      // comments: [],
+    });
+    const savedComment = await newComment.save();
+
+    // const post = await Post.find();
+    res.status(201).json(savedComment);
+  } catch (err) {
+    res.status(409).json({ message: err.message });
+  }
+};
+

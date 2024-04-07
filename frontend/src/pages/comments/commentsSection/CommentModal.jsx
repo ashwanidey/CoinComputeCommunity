@@ -2,6 +2,7 @@
 import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
 import { useState } from "react";
 import Comments from "./Comments";
+import CreateComment from "../../../components/CreateComment";
 
 const CommentModal = ({showCommentModal,setShowCommentModal,postId}) => {
   
@@ -32,22 +33,9 @@ expecting Target $0.0754 & $0.09 if hold 200 EMAadsadssssadasdsadasdasdsadsadsad
             </div>
             
             
-        <form>
-          <div class="w-full mb-4  dark:bg-gray-700 dark:border-gray-600">
-              <div class=" bg-white rounded-t-lg dark:bg-gray-800">
-                  <label for="comment" class=" text-gray-800 font-[600] text-lg py-2 ">Your Reply</label>
-                  <textarea id="comment" rows="4" class=" border border-gray-200  rounded-lg px-4 py-3 w-full  text-sm text-gray-900 bg-gray-200 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write a comment..." required />
-              </div>
-              <div class="flex items-center justify-between   dark:border-gray-600">
-                  <button type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 ml-auto">
-                      Post comment
-                  </button>
-                  
-              </div>
-          </div>
-        </form>
+        <CreateComment postId={postId}/>
         </div>
-        <a href={`comments/${postId}`} type="button" class="text-white bg-[#151314]  font-[600] rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 w-full">View Comments</a>
+        <a href={`comments/${postId}`} type="button" class="text-white mt-4 bg-[#151314]  font-[600] rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 w-full text-decoration-none">View Comments</a>
 
         </Modal.Body>
       </Modal>

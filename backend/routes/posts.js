@@ -16,7 +16,7 @@ const router = express.Router();
 router.get("/", getFeedPosts);
 router.get("/:postId", getPost);
 router.get("/following/:userId", getFollowingPosts);
-router.get("/:userId", getUserPosts);
+router.get("/user/:userId", getUserPosts);
 router.post("/", verifyToken, createPost);
 
 router.delete("/:id", verifyToken, deleteUser);

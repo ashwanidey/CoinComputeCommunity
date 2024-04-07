@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import PostSection from "./PostSection";
 import { UserContext } from "../../context/UserContext";
 import Comments from "./commentsSection/Comments";
+import CreateComment from "../../components/CreateComment";
 
 const CommentsSection = () => {
   const { postId } = useParams();
@@ -39,6 +40,7 @@ const CommentsSection = () => {
     <>
     <div className="flex flex-col gap-3 ">
       <PostSection post={post} />
+      <CreateComment postId = {post._id}/>
       <h1 class="my-4 text-2xl font-[900] leading-4 tracking-wider text-gray-900 md:text-3xl  dark:text-white">
       <mark class="px-2 text-white bg-gray-500 rounded dark:bg-blue-500">COMMENTS</mark>
       </h1>

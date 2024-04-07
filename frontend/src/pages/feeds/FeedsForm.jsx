@@ -25,14 +25,14 @@ const FeedsForm = () => {
           });
           const posts = await response.json();
           
-          window.location.reload();
+          if(isLoggedIn)window.location.reload();
         
     })
 
   const {showModal, setShowModal,isLoggedIn,isLogin,setIsLogin} = useContext(UserContext)
   return (
    <>
-   <form >
+   <form onSubmit={(e) => handleSubmit(e)}>
    <div class="w-full mb-4 border border-gray-200 rounded-lg bg-white dark:bg-gray-700 dark:border-gray-600">
        <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
            <label for="comment" class="sr-only"></label>
@@ -64,7 +64,7 @@ const FeedsForm = () => {
 </ul>
 
        {isLoggedIn ? 
-       <button type="submit" onClick ={(e)=>handleSubmit(e)} class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 ml-auto">
+       <button type="submit"  class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 ml-auto">
                POST
            </button> :
            <button class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 ml-auto" onClick={() => {
