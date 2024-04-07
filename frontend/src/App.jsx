@@ -28,6 +28,7 @@ function App() {
         <Route path = "/profilepage/:userId" element = {<><ProfilePage/></>}></Route>
         <Route path = "/comments/:postId" element = {<><CommentsPage/></>}></Route>
         <Route path = "/postdetails/:postId" element = {<><CommentsPage/></>}></Route>
+        
       </Routes>
     </>
   )

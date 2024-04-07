@@ -35,7 +35,7 @@ expecting Target $0.0754 & $0.09 if hold 200 EMAadsadssssadasdsadasdasdsadsadsad
             
         <CreateComment postId={postId}/>
         </div>
-        <a href={`comments/${postId}`} type="button" class="text-white mt-4 bg-[#151314]  font-[600] rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 w-full text-decoration-none">View Comments</a>
+        <a href={`/comments/${postId}`} type="button" class="text-white mt-4 bg-[#151314]  font-[600] rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 w-full text-decoration-none">View Comments</a>
 
         </Modal.Body>
       </Modal>
