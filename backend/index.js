@@ -11,15 +11,18 @@ import { fileURLToPath } from "url"; //Helps to set path
 import { register } from "./controllers/auth.js";
 
 import { email, username } from "./controllers/verify.js";
-import { posts, users } from "./data/index.js";
+import { comments, posts, users } from "./data/index.js";
 
 import Post from "./models/Posts.js";
 import User from "./models/User.js";
+import Comment from "./models/Comments.js";
 
 import verifyRoutes from "./routes/verify.js";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
+import commentRoutes from "./routes/comments.js"
+
 
 // CONFIGURATION
 
@@ -45,6 +48,7 @@ app.use("/verify", verifyRoutes);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
+app.use("/comments", commentRoutes);
 // MONGOOSE SETUP
 app.get("/keep-alive", (req, res) => {
   res.send("Server is alive.");
@@ -56,8 +60,9 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ADD DATA ONE TIME */
-    // User.insertMany(users);
-    // Post.insertMany(posts);
+  //   User.insertMany(users);
+  //   Post.insertMany(posts);
+  //  Comment.insertMany(comments);
     setInterval(() => {
       fetch("http://localhost:3001/keep-alive")
         .then(() => {

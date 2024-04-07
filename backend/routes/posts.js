@@ -6,6 +6,7 @@ import {
   getUserPosts,
   likePost,
   getFollowingPosts,
+  getPost,
 } from "../controllers/posts.js";
 import { verifyToken } from "../middleware/auth.js";
 
@@ -13,6 +14,7 @@ const router = express.Router();
 
 /* READ */
 router.get("/", getFeedPosts);
+router.get("/:postId", getPost);
 router.get("/following/:userId", getFollowingPosts);
 router.get("/:userId", getUserPosts);
 router.post("/", verifyToken, createPost);

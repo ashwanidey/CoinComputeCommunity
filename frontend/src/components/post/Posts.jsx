@@ -4,13 +4,11 @@ import PostFooter from "./PostFooter";
 import PostHeader from "./PostHeader";
 
 const Posts = (props) => {
-  
   const { isLoggedIn, image, user, token, host, setFlicker, flicker } =
     useContext(UserContext);
-   
+
   const [post, setPost] = useState(props.post);
   // console.log(post)
-  
 
   const imageUrl = `${image}${post.picturePath}`;
 
@@ -20,13 +18,10 @@ const Posts = (props) => {
       headers: { Authorization: `Bearer ${token}` },
     });
     const posts = await response.json();
-    
+
     props.setPosts(posts);
-    
-    window.location.reload()
-    
-    
-    
+
+    window.location.reload();
   };
 
   useEffect(() => {}, [post]);
@@ -41,8 +36,12 @@ const Posts = (props) => {
           isFollowing={props.isFollowing}
         />
 
-        {/* Description */}
-        <p className="">{post.description}</p>
+        <div>
+          <a href={`/postdetails/${post._id}`}>
+            {/* Description */}
+            <p className="">{post.description}</p>
+          </a>
+        </div>
 
         <PostFooter
           isLoggedIn={isLoggedIn}

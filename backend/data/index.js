@@ -9,7 +9,17 @@ const userIds = [
   new mongoose.Types.ObjectId(),
 ];
 
+const postIds = [
+  new mongoose.Types.ObjectId(),
+  new mongoose.Types.ObjectId(),
+  new mongoose.Types.ObjectId(),
+  new mongoose.Types.ObjectId(),
+  new mongoose.Types.ObjectId(),
+  new mongoose.Types.ObjectId(),
+]
+
 export const users = [
+  
   
   {
     _id: userIds[0],
@@ -66,55 +76,47 @@ export const users = [
 
 export const posts = [
   {
-    _id: new mongoose.Types.ObjectId(),
+    _id: postIds[0],
     userId: userIds[0],
     name: "Steve",
 
     username: "Ralph",
-    // location: "New York, CA",
+    
     description: "Some really long random description",
     picturePath: "1.jpg",
     isBullish : 'true',
-    // userPicturePath: "p3.jpeg",
+ 
     likes: new Map([
       [userIds[0], true],
       [userIds[2], true],
       [userIds[3], true],
       [userIds[4], true],
     ]),
-    // comments: [
-    //   "random comment",
-    //   "another random comment",
-    //   "yet another random comment",
-    // ],
+    
   },
   {
-    _id: new mongoose.Types.ObjectId(),
+    _id: postIds[1],
     userId: userIds[0],
     name: "Steve",
 
     username: "Ralph",
-    // location: "New York, CA",
+
     description:  `Casa is emerging from bear market hibernation.
 
     Today I'm excited to announce our acquisition of Chamber, a company on the forefront of applied cryptography. With our shared vision & resources, we intend to bring some amazing products to market soon!`,
     picturePath: "1.jpg",
     isBullish : 'false',
-    // userPicturePath: "p3.jpeg",
+
     likes: new Map([
       [userIds[0], true],
       [userIds[2], true],
       [userIds[3], true],
       [userIds[4], true],
     ]),
-    // comments: [
-    //   "random comment",
-    //   "another random comment",
-    //   "yet another random comment",
-    // ],
+    
   },
   {
-    _id: new mongoose.Types.ObjectId(),
+    _id: postIds[2],
     userId: userIds[1],
     name: "Whatcha",
     username :"something",
@@ -123,22 +125,17 @@ export const posts = [
       "Another really long random description. This one is longer than the previous one.",
     picturePath: "2.jpg",
     isBullish : 'false',
-    // userPicturePath: "p6.jpeg",
+
     likes: new Map([
       [userIds[0], true],
       [userIds[4], true],
       [userIds[1], true],
       [userIds[2], true],
     ]),
-    // comments: [
-    //   "one more random comment",
-    //   "and another random comment",
-    //   "no more random comments",
-    //   "I lied, one more random comment",
-    // ],
+    
   },
   {
-    _id: new mongoose.Types.ObjectId(),
+    _id: postIds[3],
     userId: userIds[2],
     name: "Jane",
     username: "Doe",
@@ -146,23 +143,17 @@ export const posts = [
       "This is the last really long random description. This one is longer than the previous one.",
     picturePath: "3.jpg",
     isBullish : 'true',
-    // userPicturePath: "p5.jpeg",
+   
     likes: new Map([
       [userIds[1], true],
       [userIds[0], true],
       [userIds[3], true],
       [userIds[2], true],
     ]),
-    // comments: [
-    //   "one more random comment",
-    //   "I lied, one more random comment",
-    //   "I lied again, one more random comment",
-    //   "Why am I doing this?",
-    //   "I'm bored",
-    // ],
+    
   },
   {
-    _id: new mongoose.Types.ObjectId(),
+    _id: postIds[4],
     userId: userIds[3],
     name: "Jimmy Boss",
     username: "jimmyBoss",
@@ -175,23 +166,17 @@ export const posts = [
       I think we could at least have a small bounce to 0.05+, and then we can see if ETH bulls can actually make it or not.`,
     picturePath: "4.jpg",
     isBullish : '',
-    // userPicturePath: "p5.jpeg",
+  
     likes: new Map([
       [userIds[1], true],
       [userIds[2], true],
       [userIds[3], true],
       [userIds[0], true],
     ]),
-    // comments: [
-    //   "one more random comment",
-    //   "I lied, one more random comment",
-    //   "I lied again, one more random comment",
-    //   "Why am I doing this?",
-    //   "I'm bored",
-    // ],
+  
   },
   {
-    _id: new mongoose.Types.ObjectId(),
+    _id: postIds[5],
     userId: userIds[4],
     name: "Degen Ape Trader",
     username: "Degenapetrader",
@@ -210,14 +195,65 @@ export const posts = [
       [userIds[3], true],
       [userIds[0], true],
     ]),
-    // comments: [
-    //   "one more random comment",
-    //   "I lied, one more random comment",
-    //   "I lied again, one more random comment",
-    //   "Why am I doing this?",
-    //   "I'm bored",
-    // ],
+    
   },
+]
+
+export const comments = [
+  {
+    _id: new mongoose.Types.ObjectId(),
+    userId: userIds[0],
+    postId : postIds[1],
+    name: "Steve",
+    username: "Ralph",
+    description: "Very nice post",
+    userPicturePath: "1.jpg",
+    isBullish : 'true',
+    likes: new Map([
+      [userIds[0], true],
+      [userIds[2], true],
+      [userIds[3], true],
+      [userIds[4], true],
+    ]),
+  },
+
+  {
+    _id: new mongoose.Types.ObjectId(),
+    userId: userIds[1],
+    postId : postIds[1],
+    name: "Whatcha",
+    username: "Doing",
+    description: "Damn bro good stuff!!",
+    userPicturePath: "2.jpg",
+    isBullish : 'true',
+    likes: new Map([
+      [userIds[0], true],
+      [userIds[2], true],
+      [userIds[3], true],
+      [userIds[4], true],
+    ]),
+  },
+
+  {
+    _id: new mongoose.Types.ObjectId(),
+    userId: userIds[2],
+    postId : postIds[1],
+    name: "Jane",
+    username: "Doe",
+    description: "Interested..Now Gimme Job!",
+    userPicturePath: "3.jpg",
+    isBullish : 'true',
+    likes: new Map([
+      [userIds[0], true],
+      [userIds[2], true],
+      [userIds[3], true],
+      
+    ]),
+  },
+
+
+
+
 ]
 
 

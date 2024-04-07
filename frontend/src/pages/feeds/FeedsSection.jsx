@@ -104,11 +104,13 @@ const FeedsSection = ({
       {isFollowing && (followingPosts.length !== 0 ?
         followingPosts.map((data) => {
           return (
+            
             <Posts
               post={data}
               setPosts={(data) => setFollowingPosts(data)}
               isFollowing={isFollowing}
             />
+            
           );
         }) :
         <div className="flex flex-col items-center w-full">
@@ -116,18 +118,20 @@ const FeedsSection = ({
           <img src={noFollowing} alt="" className="overflow-hidden"/>
           </div>
           <div class="text-4xl font-bold text-gray-800">Nothing here!</div>
-          <div class="text-lg font-[600] text-blue-800 mt-2">Go explore, follow some people and write some posts instead!</div>
+          <div class="md:text-lg text-md font-[600] text-blue-800 mt-2 text-center">Go explore, follow some people and write some posts instead!</div>
         </div>)}
         
       {!isFollowing && 
         posts.map((data) => {
           
           return (
+            
             <Posts
               post={data}
               setPosts={(d) => setPosts(d)}
               isFollowing={isFollowing}
             />
+            
           );
         })}
     </>

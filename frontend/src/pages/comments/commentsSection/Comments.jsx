@@ -1,8 +1,10 @@
-import React from "react";
-import defaultpp from "../../../public/assets/pp/63351f969b613d345489037b.png";
+import React, { useContext } from "react";
+import defaultpp from "../../../../public/assets/pp/63351f969b613d345489037b.png";
+import { UserContext } from "../../../context/UserContext";
 
 const Comments = ({ comment }) => {
-  const imageUrl = "";
+  const {image} = useContext(UserContext);
+  const imageUrl = `${image}/${comment.userPicturePath}`;
   return (
     <div className="w-full">
       <div className="flex gap-2 overflow-y-auto">
@@ -23,7 +25,8 @@ const Comments = ({ comment }) => {
 
         <div>
           <a
-            href={`/profilepage/${comment.userId}`}
+            href= ""
+            // {`/profilepage/${comment.userId}`}
             className="text-decoration-none"
           >
             <div className="flex ">
