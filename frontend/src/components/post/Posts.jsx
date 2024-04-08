@@ -8,7 +8,7 @@ const Posts = (props) => {
     useContext(UserContext);
 
   const [post, setPost] = useState(props.post);
-  console.log(post)
+ 
 
   const imageUrl = `${image}${post.picturePath}`;
 
@@ -39,7 +39,7 @@ const Posts = (props) => {
         />
 
         <div>
-          <a href={`/postdetails/${post._id}`} className="text-decoration-none text-none">
+          <a href={`/postdetails/${post._id}`} className="text-decoration-none text-inherit">
             {/* Description */}
             <p className="">{post.description}</p>
           </a>

@@ -8,12 +8,9 @@ const PostHeader = ({ post, imageUrl,isFollowing }) => {
     // Convert timestamp to Date object (UTC)
     const dateUTC = new Date(timestamp);
 
-    // Convert to IST
-    const dateIST = new Date(dateUTC.getTime() + (5.5 * 60 * 60 * 1000)); // Adding 5 hours 30 minutes for UTC to IST conversion
-
-    // Calculate the difference between the current time and the given timestamp
+    // Calculate the difference between the current time (UTC) and the given timestamp
     const currentDate = new Date();
-    const timeDifference = currentDate - dateIST;
+    const timeDifference = currentDate - dateUTC;
 
     // Convert milliseconds to seconds
     const secondsDifference = Math.floor(timeDifference / 1000);
@@ -40,15 +37,17 @@ const PostHeader = ({ post, imageUrl,isFollowing }) => {
     }
 
     // If relativeTime is still undefined, it means it's less than a minute ago
+
     if (!relativeTime) {
         relativeTime = 'Just now';
     }
 
     return relativeTime;
 }
+
   return (
     <div className="flex gap-2 sm:gap-4 mb-3 items-center">
-      <div className="md:w-[56px] md:h-[56px] w-[45px] h-[45px]">
+      <div className="lg:w-[56px] lg:h-[56px] md:w-[45px] md:h-[45px] w-[32px] h-[32px]">
         <div className="w-full h-full rounded-full overflow-hidden">
           <img
             src={imageUrl}
@@ -60,13 +59,13 @@ const PostHeader = ({ post, imageUrl,isFollowing }) => {
           />
         </div>
       </div>
-      <div className="flex flex-col truncate ">
+      <div className="flex flex-col line-clamp-1">
         <a
           href={`/profilepage/${post.userId}`}
           className="text-decoration-none"
         >
           <div className="font-[600] md:text-[1.1rem] flex items-center ">
-            <span className="line-clamp-1">{post.name}</span>
+            <span className="line-clamp-1 ">{post.name}</span>
             <span class="inline-flex items-center justify-center w-6 h-6 me-2 text-sm font-semibold text-blue-800  rounded-full ml-1 ">
               <svg
                 class="w-4 h-4"
@@ -86,8 +85,8 @@ const PostHeader = ({ post, imageUrl,isFollowing }) => {
               </svg>
             </span>
           </div>
-          <div className="text-[#808A9D] md:text-[1rem] text-[0.8rem]">
-            @{post.username}
+          <div className="text-[#808A9D] md:text-[1rem] text-[0.8rem] line-clamp-1 flex truncate">
+            @<span className="line-clamp-1">{post.username}</span>
           </div>
         </a>
       </div>
@@ -96,15 +95,15 @@ const PostHeader = ({ post, imageUrl,isFollowing }) => {
         {convertToRelativeTimeAgo(post.createdAt)}
       </div>
       {post.isBullish === "" ? (
-        <span class="bg-white text-black-800 text-[0.9rem] font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+        <span class="bg-white text-black-800 md:text-[0.9rem] text-[0.8rem] font-medium me-2 md:px-2.5 md:py-0.5 px-2 py-0.2 rounded dark:bg-green-900 dark:text-green-300">
           Neutral
         </span>
       ) : post.isBullish === "true" ? (
-        <span class="bg-green-100 text-green-800 text-[0.9rem] font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+        <span class="bg-green-100 text-green-800 md:text-[0.9rem] text-[0.8rem] font-medium me-2 md:px-2.5 md:py-0.5 px-2 py-0.2 rounded dark:bg-green-900 dark:text-green-300">
           Bullish
         </span>
       ) : (
-        <span class="bg-red-100 text-red-800 text-[0.9rem] font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-green-300">
+        <span class="bg-red-100 text-red-800 md:text-[0.9rem] text-[0.8rem] font-medium me-2 md:px-2.5 md:py-0.5 px-2 py-0.2 rounded dark:bg-red-900 dark:text-green-300">
           Bearish
         </span>
       )}

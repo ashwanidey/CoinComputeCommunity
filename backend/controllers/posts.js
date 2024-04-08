@@ -42,7 +42,7 @@ export const getFollowingPosts = async (req, res) => {
     
     // Flatten the array of arrays
     const formattedFollower = following.flat();
-    // formattedFollower.reverse();
+    formattedFollower.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     
 
     
@@ -60,6 +60,7 @@ export const getUserPosts = async (req, res) => {
   try {
     const { userId } = req.params;
     const post = await Post.find({ userId });
+    post.reverse()
     res.status(200).json(post);
   } catch (err) {
     res.status(404).json({ message: err.message });

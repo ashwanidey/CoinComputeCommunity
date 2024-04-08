@@ -60,15 +60,15 @@ const CommentsPostHeader = ({post}) => {
       </div>
       <div className='md:ml-3'>
       {post.isBullish === "" ? (
-        <span class="bg-white text-black-800 text-[0.9rem] font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+        <span class="bg-white text-black-800 md:text-[0.9rem] text-[0.8rem] font-medium me-2 md:px-2.5 md:py-0.5 px-2 py-0.2 rounded dark:bg-green-900 dark:text-green-300">
           Neutral
         </span>
       ) : post.isBullish === "true" ? (
-        <span class="bg-green-100 text-green-800 text-[0.9rem] font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+        <span class="bg-green-100 text-green-800 md:text-[0.9rem] text-[0.8rem] font-medium me-2 md:px-2.5 md:py-0.5 px-2 py-0.2 rounded dark:bg-green-900 dark:text-green-300">
           Bullish
         </span>
       ) : (
-        <span class="bg-red-100 text-red-800 text-[0.9rem] font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-green-300">
+        <span class="bg-red-100 text-red-800 md:text-[0.9rem] text-[0.8rem] font-medium me-2 md:px-2.5 md:py-0.5 px-2 py-0.2 rounded dark:bg-red-900 dark:text-green-300">
           Bearish
         </span>
       )}
