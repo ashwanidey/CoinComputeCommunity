@@ -16,7 +16,7 @@ export const getPost = async (req, res) => {
     const {postId} = req.params;
 
     const post = await Post.findById(postId);
-    post.reverse();
+    
     res.status(200).json(post);
   } catch (err) {
     res.status(404).json({ message: err.message });
@@ -41,13 +41,14 @@ export const getFollowingPosts = async (req, res) => {
     );
     
     // Flatten the array of arrays
-    const formattedFriends = following.flat();
+    const formattedFollower = following.flat();
+    formattedFollower.reverse();
     
 
     
 
     // const posts = await Post.find({ userId: { $in: followingList } });
-    res.status(200).json(formattedFriends );
+    res.status(200).json(formattedFollower );
   } catch (err) {
     res.status(404).json({ message: err.message });
   }

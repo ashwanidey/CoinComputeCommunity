@@ -107,7 +107,7 @@ const FeedsSection = ({
             
             <Posts
               post={data}
-              setPosts={(data) => setFollowingPosts(data)}
+              setPosts={(data) => setFollowingPosts(prev => [...prev,data])}
               isFollowing={isFollowing}
             />
             
