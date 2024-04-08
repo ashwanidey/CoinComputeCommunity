@@ -17,7 +17,7 @@ router.get("/", getFeedPosts);
 router.get("/:postId", getPost);
 router.get("/following/:userId", getFollowingPosts);
 router.get("/user/:userId", getUserPosts);
-router.post("/", verifyToken, createPost);
+router.post("/", createPost);
 
 router.delete("/:id", verifyToken, deleteUser);
 router.patch("/like/:id", verifyToken, likePost);

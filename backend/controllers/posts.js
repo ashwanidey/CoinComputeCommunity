@@ -4,6 +4,7 @@ import User from "../models/User.js";
 export const getFeedPosts = async (req, res) => {
   try {
     const post = await Post.find();
+    post.reverse();
     res.status(200).json(post);
   } catch (err) {
     res.status(404).json({ message: err.message });
@@ -15,6 +16,7 @@ export const getPost = async (req, res) => {
     const {postId} = req.params;
 
     const post = await Post.findById(postId);
+    post.reverse();
     res.status(200).json(post);
   } catch (err) {
     res.status(404).json({ message: err.message });
