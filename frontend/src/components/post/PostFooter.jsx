@@ -25,6 +25,8 @@ const PostFooter = ({ isLoggedIn, postUserId, deleteUser, post, setPost }) => {
     setPost(updatedPost);
   };
 
+  
+
   return (
     <div className="flex mt-3 items-center">
       {isLoggedIn ? (

@@ -8,7 +8,7 @@ const Posts = (props) => {
     useContext(UserContext);
 
   const [post, setPost] = useState(props.post);
-  // console.log(post)
+  console.log(post)
 
   const imageUrl = `${image}${post.picturePath}`;
 
@@ -23,6 +23,8 @@ const Posts = (props) => {
 
     window.location.reload();
   };
+
+  
 
   useEffect(() => {}, [post]);
 

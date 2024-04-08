@@ -34,15 +34,15 @@ export const getFollowingPosts = async (req, res) => {
     const following = await Promise.all(
       user.following.map(async (id) => {
         const posts = await Post.find({ userId: id });
-        return posts.map(({ _id, name, username, description, isBullish, likes, picturePath }) => {
-          return { _id, name, username, description, isBullish, likes, picturePath };
+        return posts.map(({ _id,userId, name, username, description, isBullish, likes, picturePath,createdAt }) => {
+          return { _id,userId, name, username, description, isBullish, likes, picturePath,createdAt };
         });
       })
     );
     
     // Flatten the array of arrays
     const formattedFollower = following.flat();
-    formattedFollower.reverse();
+    // formattedFollower.reverse();
     
 
     
@@ -86,6 +86,52 @@ export const createPost = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: `${userId}` });
     }
+
+    const newPost = new Post({
+      userId,
+      name: user.name,
+      username: user.username,
+      description,
+      picturePath: user.picturePath,
+      isBullish,
+      // picturePath,
+      likes: {},
+      // comments: [],
+    });
+    const savedPost = await newPost.save();
+
+    // const post = await Post.find();
+    res.status(201).json(savedPost);
+  } catch (err) {
+    res.status(409).json({ message: err.message });
+  }
+};
+
+
+export const createPostBot = async (req, res) => {
+  try {
+    const { isBullish, userId,screenName } = req.body;
+    const user = await User.findById(userId);
+    
+    const url = `https://twitter-api45.p.rapidapi.com/timeline.php?screenname=${screenName}`;
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': 'fef93e0117msh2c96991107f59b4p1fb309jsn5804230510a6',
+        'X-RapidAPI-Host': 'twitter-api45.p.rapidapi.com'
+      }
+    };
+
+    
+      const response = await fetch(url, options);
+      const result = await response.json();
+      const tweet = result.timeline[0].text;
+      
+
+
+      let description = tweet.replace(/RT\s@.*?:\s"/, '');
+
+   
 
     const newPost = new Post({
       userId,
