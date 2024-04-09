@@ -22,7 +22,7 @@ const ArticlesSection = () => {
        
     {news.map((data,index) => (
         
-        <a href={data.url} className='text-decoration-none color-inherit'>
+        <a href={data.url} className='text-decoration-none color-inherit' >
         <ArticlesCard articles = {data}/>
         </a>
         

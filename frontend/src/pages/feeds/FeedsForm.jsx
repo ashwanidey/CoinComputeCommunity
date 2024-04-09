@@ -3,7 +3,7 @@ import 'flowbite'
 import { UserContext } from '../../context/UserContext'
 
 const FeedsForm = () => {
-    const {user,token,host} = useContext(UserContext);
+    const {user,token,host,darkMode} = useContext(UserContext);
     const [description,setDescription] = useState("");
     const [isBullish,setIsBullish] = useState('');
 
@@ -33,10 +33,10 @@ const FeedsForm = () => {
   return (
    <>
    <form onSubmit={(e) => handleSubmit(e)}>
-   <div class="w-full mb-4 border border-gray-200 rounded-lg bg-white dark:bg-gray-700 dark:border-gray-600">
-       <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
+   <div class="w-full mb-4 border border-gray-200 rounded-lg  dark:bg-gray-700 dark:border-gray-600" style={darkMode ? {boxShadow: "0px 8px 32px 0px #0D1421, 0px 1px 2px 0px #0D1421"} : {boxShadow : "0px 8px 32px 0px rgba(128,138,157,0.24),0px 1px 2px 0px rgba(128,138,157,0.12)"}}>
+       <div class="px-4 py-2  rounded-t-lg dark:bg-gray-800">
            <label for="comment" class="sr-only"></label>
-           <textarea id="comment" rows="2" class="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="How do you feel about market today? Share your thoughts..." onChange={(e) => setDescription(e.target.value)}  required ></textarea>
+           <textarea id="comment" rows="2" class="w-full px-0 text-sm text-gray-900 border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="How do you feel about market today? Share your thoughts..." onChange={(e) => setDescription(e.target.value)}  required ></textarea>
        </div>
        <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
 
@@ -46,7 +46,7 @@ const FeedsForm = () => {
         <label for="hosting-small" class=" inline-flex items-center justify-between w-full p-2 text-gray-500  border border-gray-200 rounded-2xl cursor-pointer group  peer-checked:bg-[#16C784] peer-checked:text-white hover:text-gray-600 ">                      
             <div class=" block">
                 
-                <div class="w-full md:text-[0.9rem] text-[0.7rem] ">Bullish</div>
+                <div class="w-full md:text-[0.9rem] text-[0.7rem] dark:text-white  ">Bullish</div>
             </div>
             
         </label>
@@ -56,7 +56,7 @@ const FeedsForm = () => {
         <label for="hosting-big" class="inline-flex items-center justify-between w-full p-2 text-gray-500  border border-gray-200 rounded-2xl cursor-pointer group  peer-checked:bg-[#EA3943] peer-checked:text-white hover:text-gray-600">
             <div class="block">
                 
-                <div class="w-full md:text-[0.9rem] text-[0.7rem]">Bearish</div>
+                <div class="w-full md:text-[0.9rem] text-[0.7rem] dark:text-white ">Bearish</div>
             </div>
             
         </label>

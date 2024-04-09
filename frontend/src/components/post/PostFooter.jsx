@@ -56,7 +56,7 @@ const PostFooter = ({ isLoggedIn, postUserId, deleteUser, post, setPost }) => {
                 d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"
               />
             </svg>
-            <div className="mb-0.1">{numberOfLikes}</div>
+            <div className="mb-0.1 text-gray-800 dark:text-white">{numberOfLikes}</div>
           </button>
         ) : (
           <button
@@ -78,7 +78,7 @@ const PostFooter = ({ isLoggedIn, postUserId, deleteUser, post, setPost }) => {
             >
               <path d="m12.75 20.66 6.184-7.098c2.677-2.884 2.559-6.506.754-8.705-.898-1.095-2.206-1.816-3.72-1.855-1.293-.034-2.652.43-3.963 1.442-1.315-1.012-2.678-1.476-3.973-1.442-1.515.04-2.825.76-3.724 1.855-1.806 2.201-1.915 5.823.772 8.706l6.183 7.097c.19.216.46.34.743.34a.985.985 0 0 0 .743-.34Z" />
             </svg>
-            <div className="mb-0.1">{numberOfLikes}</div>
+            <div className="mb-0.1 text-gray-800 dark:text-white">{numberOfLikes}</div>
           </button>
         )
       ) : (
@@ -106,7 +106,7 @@ const PostFooter = ({ isLoggedIn, postUserId, deleteUser, post, setPost }) => {
               d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"
             />
           </svg>
-          <div className="mb-0.1">{numberOfLikes}</div>
+          <div className="mb-0.1 text-gray-800 dark:text-white">{numberOfLikes}</div>
         </button>
       )}
       <button className="ml-8" onClick={() => setShowCommentModal(true)}>
@@ -135,7 +135,7 @@ const PostFooter = ({ isLoggedIn, postUserId, deleteUser, post, setPost }) => {
 
       {isLoggedIn && (user._id === admin || user._id === postUserId) && (
         <button
-          className="ml-auto mt-auto"
+          className="ml-auto mt-auto "
           onClick={() => {
             deleteUser();
           }}
@@ -145,7 +145,7 @@ const PostFooter = ({ isLoggedIn, postUserId, deleteUser, post, setPost }) => {
             x="0px"
             y="0px"
             viewBox="0 0 24 24"
-            className="w-5 h-5 text-gray-800 "
+            className="w-5 h-5 text-gray-800 dark:text-white "
             fill="currentcolor"
           >
             <path d="M 10.806641 2 C 10.289641 2 9.7956875 2.2043125 9.4296875 2.5703125 L 9 3 L 4 3 A 1.0001 1.0001 0 1 0 4 5 L 20 5 A 1.0001 1.0001 0 1 0 20 3 L 15 3 L 14.570312 2.5703125 C 14.205312 2.2043125 13.710359 2 13.193359 2 L 10.806641 2 z M 4.3652344 7 L 5.8925781 20.263672 C 6.0245781 21.253672 6.877 22 7.875 22 L 16.123047 22 C 17.121047 22 17.974422 21.254859 18.107422 20.255859 L 19.634766 7 L 4.3652344 7 z"></path>

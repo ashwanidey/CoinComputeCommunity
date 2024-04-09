@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import profilePic from "../../../public/assets/pp/63351f969b613d345489037b.png";
 import FollowButton from "../FollowButton";
+import { UserContext } from "../../context/UserContext";
 
 const PostHeader = ({ post, imageUrl,isFollowing }) => {
+  const {darkMode} = useContext(UserContext)
 
   function convertToRelativeTimeAgo(timestamp) {
     // Convert timestamp to Date object (UTC)
@@ -46,8 +48,8 @@ const PostHeader = ({ post, imageUrl,isFollowing }) => {
 }
 
   return (
-    <div className="flex gap-2 sm:gap-4 mb-3 items-center">
-      <div className="lg:w-[56px] lg:h-[56px] md:w-[45px] md:h-[45px] w-[32px] h-[32px]">
+    <div className="flex gap-2 sm:gap-4 mb-3 items-center dark:text-white">
+      <div className="lg:w-[56px] lg:h-[56px] md:w-[45px] md:h-[45px] w-[32px] h-[32px] rounded-full" style={darkMode ? {boxShadow: "0px 8px 32px 0px #0D1421, 0px 1px 2px 0px #0D1421"} : {boxShadow : "0px 8px 32px 0px rgba(128,138,157,0.24),0px 1px 2px 0px rgba(128,138,157,0.12)"}}>
         <div className="w-full h-full rounded-full overflow-hidden">
           <img
             src={imageUrl}
@@ -68,7 +70,7 @@ const PostHeader = ({ post, imageUrl,isFollowing }) => {
             <span className="line-clamp-1 ">{post.name}</span>
             <span class="inline-flex items-center justify-center w-6 h-6 me-2 text-sm font-semibold text-blue-800  rounded-full ml-1 ">
               <svg
-                class="w-4 h-4"
+                class="w-4 h-4 dark:text-blue-500"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -85,17 +87,17 @@ const PostHeader = ({ post, imageUrl,isFollowing }) => {
               </svg>
             </span>
           </div>
-          <div className="text-[#808A9D] md:text-[1rem] text-[0.8rem] line-clamp-1 flex truncate">
+          <div className="text-[#808A9D] dark:text-gray-300 md:text-[1rem] text-[0.8rem] line-clamp-1 flex truncate">
             @<span className="line-clamp-1">{post.username}</span>
           </div>
         </a>
       </div>
 
-      <div className="text-[#808A9D] md:ml-[-10px] ml-[-12px] md:text-[1rem] text-[0.8rem] whitespace-nowrap">
+      <div className="text-[#808A9D] md:ml-[-10px] ml-[-12px] md:text-[1rem] text-[0.8rem] whitespace-nowrap dark:text-gray-300">
         {convertToRelativeTimeAgo(post.createdAt)}
       </div>
       {post.isBullish === "" ? (
-        <span class="bg-white text-black-800 md:text-[0.9rem] text-[0.8rem] font-medium me-2 md:px-2.5 md:py-0.5 px-2 py-0.2 rounded dark:bg-green-900 dark:text-green-300">
+        <span class="bg-white text-black-800 md:text-[0.9rem] text-[0.8rem] font-medium me-2 md:px-2.5 md:py-0.5 px-2 py-0.2 rounded dark:bg-green-900 dark:text-gray-800">
           Neutral
         </span>
       ) : post.isBullish === "true" ? (
@@ -103,7 +105,7 @@ const PostHeader = ({ post, imageUrl,isFollowing }) => {
           Bullish
         </span>
       ) : (
-        <span class="bg-red-100 text-red-800 md:text-[0.9rem] text-[0.8rem] font-medium me-2 md:px-2.5 md:py-0.5 px-2 py-0.2 rounded dark:bg-red-900 dark:text-green-300">
+        <span class="bg-red-100 text-red-800 md:text-[0.9rem] text-[0.8rem] font-medium me-2 md:px-2.5 md:py-0.5 px-2 py-0.2 rounded dark:bg-red-900 dark:text-red-300">
           Bearish
         </span>
       )}

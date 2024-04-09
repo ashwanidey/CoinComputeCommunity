@@ -80,8 +80,8 @@ const FeedsSection = ({
           <div className="w-[40%] ">
           <img src={noFollowing} alt="" className="overflow-hidden"/>
           </div>
-          <div class="text-4xl font-bold text-gray-800">Nothing here!</div>
-          <div class="md:text-lg text-md font-[600] text-blue-800 mt-2 text-center">Go explore, follow some people and write some posts instead!</div>
+          <div class="text-4xl font-bold text-gray-800 dark:text-white ">Nothing here!</div>
+          <div class="md:text-lg text-md font-[600] text-blue-800 dark:text-blue-100 mt-2 text-center">Go explore, follow some people and write some posts instead!</div>
         </div>)}
         
       {!isFollowing && 

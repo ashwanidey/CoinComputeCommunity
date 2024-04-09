@@ -18,7 +18,7 @@ const ProfileSection = () => {
     host,
     image,
     setShowProfileModal,
-    showProfileModal,
+    showProfileModal,darkMode
   } = useContext(UserContext);
   const [isFollowers, setIsFollowers] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -113,7 +113,7 @@ const ProfileSection = () => {
               <div className="absolute inset-[45%]"></div>
             </div>
 
-            <div className="pl-[24px]">
+            <div className="pl-[24px] dark:text-white">
               <div class="grid grid-cols-[min-content,min-content] gap-x-8">
                 <div class="grid grid-rows-2 sm:gap-y-6">
                   <div className="grid-item h-[100px] relative top-[-24px]">
@@ -121,7 +121,7 @@ const ProfileSection = () => {
                       className="w-[140px] h-[140px] 
             
             rounded-full bg-white overflow-hidden p-[4px]"
-                    >
+            style={darkMode ? {boxShadow: "0px 8px 32px 0px #0D1421, 0px 1px 2px 0px #0D1421"} : {boxShadow : "0px 8px 32px 0px rgba(128,138,157,0.24),0px 1px 2px 0px rgba(128,138,157,0.12)"}}>
                       <span className="w-[110px] h-[110px]">
                         <div className="rounded-full w-full h-full overflow-hidden">
                           <img
@@ -139,17 +139,17 @@ const ProfileSection = () => {
                   </div>
 
                   <div class="grid-item pt-2">
-                    <span className="whitespace-nowrap text-[#58667E] text-[1rem] ">
+                    <span className="whitespace-nowrap text-[#58667E] text-[1rem] dark:text-gray-200">
                       Joined 2024 March
                     </span>
                   </div>
                 </div>
                 <div class="grid grid-rows-2 gap-y-4">
                   <div class="grid-item pt-2">
-                    <div className="font-[600] text-[1.5rem]  whitespace-nowrap">
+                    <div className="font-[600] text-[1.5rem]  whitespace-nowrap ">
                       {user.name}
                     </div>
-                    <div>
+                    <div className="dark:text-gray-300">
                       <span>@</span>
                       {user.username}
                     </div>

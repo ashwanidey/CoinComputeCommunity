@@ -40,10 +40,10 @@ const FeedsPage = () => {
 
   return (
     <div className="min-h-[calc(-108px + 100vh)]  flex">
-      <div className="flex-grow-0 flex-shrink-0 flex-basis-[260px] bg-white h-full min-w-64 lg:flex hidden">
+      <div className="flex-grow-0 flex-shrink-0 flex-basis-[260px] bg-white dark:bg-gray-800 h-full min-w-64 lg:flex hidden">
         {" "}
       </div>
-      <div className="max-w-[1000px] w-full flex-grow-2 flex-shrink-1 flex-basis-0 md:px-[24px] px-[14px] py-[32px] ">
+      <div className="max-w-[1000px] w-full flex-grow-2 dark:bg-gray-800 flex-shrink-1 flex-basis-0 md:px-[24px] px-[14px] py-[32px] ">
         <FeedsSection
           setFollowingPosts={(d) => setFollowingPosts(d)}
           setPosts={(d) => {

@@ -111,7 +111,7 @@ export const createPost = async (req, res) => {
 
 export const createPostBot = async (req, res) => {
   try {
-    const { isBullish, userId,screenName } = req.body;
+    const { isBullish, userId,screenName,picturePath } = req.body;
     const user = await User.findById(userId);
     
     const url = `https://twitter-api45.p.rapidapi.com/timeline.php?screenname=${screenName}`;
