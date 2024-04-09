@@ -123,6 +123,8 @@ export const createPostBot = async (req, res) => {
       }
     };
 
+    const likeCount = Math.floor(Math.random() * (10000 - 100 + 1)) + 100;
+
     
       const response = await fetch(url, options);
       const result = await response.json();
@@ -143,6 +145,7 @@ export const createPostBot = async (req, res) => {
       isBullish,
       // picturePath,
       likes: {},
+      likeCount : likeCount,
       // comments: [],
     });
     const savedPost = await newPost.save();

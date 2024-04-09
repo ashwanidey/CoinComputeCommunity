@@ -37,6 +37,10 @@ const postSchema = mongoose.Schema(
     //   type: Array,
     //   default: [],
     // },
+    likeCount  :{
+      type : String,
+      default: ""
+    }
   },
   { timestamps: true }
 );
