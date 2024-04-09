@@ -19,6 +19,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
+import { CryptoNewsProvider } from './context/NewsContext.jsx'
 
 
 const persistConfig = { key: "root", storage, version: 1 };
@@ -35,15 +36,17 @@ const store = configureStore({
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  
     <BrowserRouter>
     <Provider store={store}>
     <PersistGate loading={null} persistor={persistStore(store)}> 
     <UserProvider>
+      <CryptoNewsProvider>
         <App />
+        </CryptoNewsProvider>
         </UserProvider>
     </PersistGate>
     </Provider>
     </BrowserRouter>
-  </React.StrictMode>,
+  
 )

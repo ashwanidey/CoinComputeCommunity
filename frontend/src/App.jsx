@@ -11,6 +11,7 @@ import SideBar from './pages/sidebar/SideBar';
 import 'flowbite';
 import Feeds from './pages/feeds/FeedsPage';
 import CommentsPage from './pages/comments/CommentsPage';
+import ArticlesPage from './pages/articles/ArticlesPage';
 
 function App() {
   const [show,setShow] = useState(false);
@@ -28,6 +29,7 @@ function App() {
         <Route path = "/profilepage/:userId" element = {<><ProfilePage/></>}></Route>
         <Route path = "/comments/:postId" element = {<><CommentsPage/></>}></Route>
         <Route path = "/postdetails/:postId" element = {<><CommentsPage/></>}></Route>
+        <Route path = "/articles" element = {<><ArticlesPage/></>}></Route>
         
       </Routes>
     </>

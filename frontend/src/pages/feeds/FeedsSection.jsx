@@ -18,44 +18,7 @@ const FeedsSection = ({
   setIsFollowing,
 }) => {
   const { isLoggedIn, setShowModal, setIsLogin } = useContext(UserContext);
-  // const [posts, setPosts] = useState([]);
-  // const [isFollowing,setIsFollowing] = useState(false);
-  // const [followingPosts,setFollowingPosts] = useState([]);
-  // const user = JSON.parse(localStorage.getItem("user"));
-  // const { host,flicker} = useContext(UserContext);
-
-  // const getPosts = async () => {
-  //   const token = await JSON.parse(localStorage.getItem("token"));
-  //   const response = await fetch(`${host}/posts/`, {
-  //     method: "GET",
-  //     headers: { Authorization: `Bearer ${token}` },
-  //   });
-  //   const data = await response.json();
-  //   setPosts(data);
-  // };
-
-  // const getFollowingPosts = async() => {
-  //   const token = await JSON.parse(localStorage.getItem("token"));
-  //   const response = await fetch(`${host}/posts/following/${user._id}`, {
-  //     method: "GET",
-  //     headers: { Authorization: `Bearer ${token}` },
-  //   });
-  //   const data = await response.json();
-
-  //   setFollowingPosts(data);
-  //   console.log(posts)
-  // }
-
-  // useEffect(() => {
-  //   getPosts();
-
-  // }, []);
-
-  // useEffect(()=> {
-
-  // },[posts,followingPosts])
-
-  // console.log(posts)
+ 
   useEffect(() => {}, [posts, followingPosts, isFollowing, posts.likes]);
   
 
