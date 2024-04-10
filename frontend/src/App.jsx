@@ -12,6 +12,7 @@ import 'flowbite';
 import Feeds from './pages/feeds/FeedsPage';
 import CommentsPage from './pages/comments/CommentsPage';
 import ArticlesPage from './pages/articles/ArticlesPage';
+import BottomBar from './pages/bottomNavBar/BottomBar';
 
 function App() {
   const [show,setShow] = useState(false);
@@ -32,6 +33,7 @@ function App() {
         <Route path = "/articles" element = {<><ArticlesPage/></>}></Route>
         
       </Routes>
+      <BottomBar/>
     </>
   )
 }

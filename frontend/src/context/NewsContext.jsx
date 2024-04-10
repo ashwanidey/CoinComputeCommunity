@@ -2,7 +2,7 @@ import { createContext, useEffect, useState ,useLayoutEffect} from "react";
 import axios from "axios"
 
 export const CryptoNewsContext = createContext({});
-const apiKey = '75acbbfe11msh9a549667cd39781p121f3ajsn1dc9cc6f1677';
+const apiKey = 'fef93e0117msh2c96991107f59b4p1fb309jsn5804230510a6';
 
 export const CryptoNewsProvider = ({children}) => {
 
