@@ -6,8 +6,8 @@ import Row from 'react-bootstrap/Row';
 import * as formik from 'formik';
 import * as yup from 'yup';
 import { useContext, useState } from 'react';
-import { useDispatch } from "react-redux";
-import { setLogin } from '../../state';
+
+
 import { useNavigate } from "react-router-dom";
 import { UserContext } from '../../context/UserContext';
 
@@ -34,7 +34,7 @@ const inputStyle = {
 
 export const InfoForms = (props) => {
   const {setUser,setIsLoggedIn,saveUser,isloading,setIsLoading,isLogin,setIsLogin,host} = useContext(UserContext);
-  const dispatch = useDispatch();
+ 
   const navigate = useNavigate();
   
   const { Formik } = formik;
