@@ -57,11 +57,20 @@ export const UserProvider = ({ children }) => {
     // else deleteUser();
     // if(token.length !== 0)
     // setToken(loggedToken)
+  }, []);
+
+  useEffect(() => {
+    setIsLoggedIn(JSON.parse(localStorage.getItem("LoggedIn")));
+    const loggedUser = JSON.parse(localStorage.getItem("user"));
+
+    setUser(loggedUser);
+    setToken(JSON.parse(localStorage.getItem("token")));
+    if (user && token) getUser();
+    // else deleteUser();
+    // if(token.length !== 0)
+    // setToken(loggedToken)
   }, [isLoggedIn]);
 
-  // useEffect(() => {
-  //   window.location.reload();
-  // }, [isLoggedIn]);
 
   
 

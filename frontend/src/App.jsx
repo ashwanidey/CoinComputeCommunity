@@ -13,6 +13,7 @@ import Feeds from './pages/feeds/FeedsPage';
 import CommentsPage from './pages/comments/CommentsPage';
 import ArticlesPage from './pages/articles/ArticlesPage';
 import BottomBar from './pages/bottomNavBar/BottomBar';
+import MessagePage from './pages/messages/MessagePage';
 
 function App() {
   const [show,setShow] = useState(false);
@@ -31,6 +32,8 @@ function App() {
         <Route path = "/comments/:postId" element = {<><CommentsPage/></>}></Route>
         <Route path = "/postdetails/:postId" element = {<><CommentsPage/></>}></Route>
         <Route path = "/articles" element = {<><ArticlesPage/></>}></Route>
+        <Route path = "/messages" element = {<><MessagePage/></>}></Route>
+        <Route path = "/messages/:chatUserId" element = {<><MessagePage/></>}></Route>
         
       </Routes>
       <BottomBar/>
