@@ -14,16 +14,16 @@ const MessagePage = () => {
   
 
   useEffect(() => {
-    return () => setSelectedConversation('asdsa');
+    return () => setSelectedConversation(null);
   }, [setSelectedConversation]);
 
   return (
-    <div className="min-h-[calc(-108px + 100vh)] dark:bg-gray-800  h-full flex">
-      <div className="flex-grow-0 flex-shrink-0 flex-basis-[260px]  h-full min-w-64 lg:flex hidden">
+    <div className="min-h-[calc(-108px + 100vh)] dark:bg-gray-800  h-full flex overflow-y-hidden">
+      <div className="flex-grow-0 flex-shrink-0 flex-basis-[260px]  h-full min-w-64 lg:flex hidden ">
         {" "}
       </div>
       {isLoggedIn ? (
-        <div className="flex w-full">
+        <div className="flex w-full ">
           <div
             className={`max-w-[1000px] w-full flex-grow-2 flex-shrink-1 flex-basis-0  dark:bg-gray-800  md:px-[24px] px-[14px] py-[32px] ${
               selectedConversation ? "md:block hidden" : ""
@@ -34,9 +34,10 @@ const MessagePage = () => {
 
           {selectedConversation ? (
             <>
-              <div className=" md:min-w-[50%] w-full p-3 ">
+              <div className=" md:min-w-[50%] w-full p-3 overflow-y-hidden mb-[4rem]">
                <ConversationSection/>
               </div>
+              
             </>
           ) : (
             <div className=" min-w-[50%] bg-gray-50 dark:bg-[#323546]  lg:flex hidden  justify-center items-center">

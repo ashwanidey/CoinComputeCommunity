@@ -1,21 +1,40 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MessagesContext } from "../../../context/MessagesContext";
 import { useParams } from "react-router-dom";
 import defaultpp from "../../../../public/assets/pp/63351f969b613d345489037b.png";
 import { UserContext } from "../../../context/UserContext";
 import Messages from "./Messages";
+import InputMessage from "./InputMessage";
 
 const ConversationSection = () => {
-  const { chatUserId } = useParams;
-  const { setSelectedConversation } = useContext(MessagesContext);
-  const { image } = useContext(UserContext);
-  const imageUrl = `${image}${chatUserId}`;
+  const { setSelectedConversation,selectedConversation  } = useContext(MessagesContext);
+  
+  const [chatPerson,setChatPerson] = useState(null);
+  const { image,host,token } = useContext(UserContext);
+  const user = JSON.parse(localStorage.getItem("user"));
+  const imageUrl = `${image}${chatPerson && chatPerson.picturePath}`;
+
+  const getUser = async () => {
+    const response = await fetch(`${host}/users/${selectedConversation}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await response.json();
+    setChatPerson(data);
+  }
+
+  useEffect(()=>{
+    getUser();
+  },[selectedConversation])
 
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex gap-3">
+      <div className="flex gap-3 md:fixed sticky  dark:bg-gray-800  md:w-[38%] w-[98%] ">
         <button
           onClick={() => {
             navigate("/messages");
@@ -57,7 +76,7 @@ const ConversationSection = () => {
           </div>
           <div className="flex flex-col justify-center">
             <h1 class="md:text-3xl text-xl font-extrabold dark:text-white">
-              Full Name
+              {chatPerson && chatPerson.name}
             </h1>
             <div className="text-[#808A9D] md:text-[1rem] text-[0.8rem] ">
               online
@@ -68,9 +87,13 @@ const ConversationSection = () => {
 
       
 
-      <div className=" w-full h-full rounded-lg mt-5">
-        <Messages/>
+      <div className=" w-full h-full rounded-lg mt-[2rem] md:mt-[6rem]  overflow-y-auto">
+        <Messages chatPerson = {chatPerson} userId = {user._id}/>
       </div>
+      <div className="fixed bottom-0  w-full -mx-3">
+      <InputMessage chatUserId = {selectedConversation} userId = {user._id}/>
+      </div>
+     
     </>
   );
 };

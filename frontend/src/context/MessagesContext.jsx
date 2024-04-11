@@ -2,7 +2,8 @@ import { createContext, useEffect, useState ,useLayoutEffect} from "react";
 
 export const MessagesContext= createContext({});
 export const MessagesProvider = ({children}) => {
-  const [selectedConversation,setSelectedConversation] = useState(' sdasd');
+  const [selectedConversation,setSelectedConversation] = useState(null);
+  const [messages,setMessages] = useState([]);
  
   // useEffect(()=>{
   //   if(localStorage.getItem("selectedConversation")){
@@ -16,7 +17,7 @@ export const MessagesProvider = ({children}) => {
   return(
     <MessagesContext.Provider
     value={{
-      selectedConversation,setSelectedConversation
+      selectedConversation,setSelectedConversation,messages,setMessages
     }}
   >
     {children}

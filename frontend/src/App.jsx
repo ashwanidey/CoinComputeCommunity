@@ -36,7 +36,7 @@ function App() {
         <Route path = "/messages/:chatUserId" element = {<><MessagePage/></>}></Route>
         
       </Routes>
-      <BottomBar/>
+      {/* <BottomBar/> */}
     </>
   )
 }

@@ -22,6 +22,7 @@ import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import commentRoutes from "./routes/comments.js"
+import messagesRoutes from "./routes/messages.js"
 
 
 // CONFIGURATION
@@ -49,6 +50,7 @@ app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 app.use("/comments", commentRoutes);
+app.use("/messages", messagesRoutes);
 // MONGOOSE SETUP
 app.get("/keep-alive", (req, res) => {
   res.send("Server is alive.");
