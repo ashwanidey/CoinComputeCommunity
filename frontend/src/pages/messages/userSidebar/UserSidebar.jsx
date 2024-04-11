@@ -13,10 +13,10 @@ const UserSidebar = () => {
   const [isLoading,setIsLoading] = useState(false);
   const [people,setPeople] = useState([])
 
-  const getFollowing = async () => {
+  const getConversations= async () => {
     setIsLoading(true);
     
-    const response = await fetch(`${host}/users/following/${user && user._id}`, {
+    const response = await fetch(`${host}/messages/conversations/all/${user && user._id}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token && token}` },
     });
@@ -26,13 +26,14 @@ const UserSidebar = () => {
     // console.log(followers);
     setIsLoading(false);
   };
-
+  console.log(people)
   useEffect(()=>{
-    getFollowing();
+    getConversations();
   },[])
 
   return (
     <>
+    <div>
       <h1 class="mb-4 text-5xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
         <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
           Messages
@@ -40,11 +41,13 @@ const UserSidebar = () => {
       </h1>
       <SearchBar />
       <div className="mt-4">
+        
       {people.map(person => {
         return (
           <EachUser person = {person}/>
         )
       })}
+      </div>
       </div>
     </>
   );

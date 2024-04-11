@@ -34,7 +34,7 @@ const ConversationSection = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex gap-3 md:fixed sticky  dark:bg-gray-800  md:w-[38%] w-[98%] ">
+      <div className="flex gap-3 md:fixed sticky top-0  dark:bg-gray-800  md:w-[38%] w-[98%] ">
         <button
           onClick={() => {
             navigate("/messages");
