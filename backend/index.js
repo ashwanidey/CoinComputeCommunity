@@ -23,6 +23,7 @@ import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import commentRoutes from "./routes/comments.js"
 import messagesRoutes from "./routes/messages.js"
+import { app,server } from "./socket/scoket.js";
 
 
 // CONFIGURATION
@@ -32,7 +33,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 dotenv.config();
-const app = express();
+
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
@@ -59,7 +60,7 @@ const PORT = process.env.PORT || 6001;
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    server.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ADD DATA ONE TIME */
   //   User.insertMany(users);

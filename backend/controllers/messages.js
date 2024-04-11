@@ -1,6 +1,7 @@
 
 import Conversation from "../models/Conversation.js";
 import Message from "../models/Messages.js";
+import { getReceiverSocketId, io } from "../socket/scoket.js";
 // import { getReceiverSocketId, io } from "../socket/socket.js";
 
 export const sendMessage = async (req, res) => {
@@ -33,11 +34,12 @@ export const sendMessage = async (req, res) => {
 		await Promise.all([conversation.save(), newMessage.save()]);
 
 		// SOCKET IO FUNCTIONALITY WILL GO HERE
-		// const receiverSocketId = getReceiverSocketId(receiverId);
-		// if (receiverSocketId) {
-		// 	// io.to(<socket_id>).emit() used to send events to specific client
-		// 	io.to(receiverSocketId).emit("newMessage", newMessage);
-		// }
+		const receiverSocketId = getReceiverSocketId
+		(receiverId);
+		if (receiverSocketId) {
+			// io.to(<socket_id>).emit() used to send events to specific client
+			io.to(receiverSocketId).emit("newMessage", newMessage);
+		}
 
 		res.status(201).json(newMessage);
 	} catch (error) {
