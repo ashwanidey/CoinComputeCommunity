@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../../../context/UserContext';
+import { MessagesContext } from '../../../context/MessagesContext';
 
 const InputMessage = ({chatUserId,userId}) => {
-
+  const {setMessages,messages} = useContext(MessagesContext)
   const [message,setMessage] = useState("");
   const {host,token} = useContext(UserContext)
 
@@ -20,9 +21,10 @@ const InputMessage = ({chatUserId,userId}) => {
       body: JSON.stringify(values),
     });
     const posts = await response.json();
-    console.log(posts)
-
+    
+    
     setMessage("")
+    setMessages([...messages, posts]);
   }
 
   return (

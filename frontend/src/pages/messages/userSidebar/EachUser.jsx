@@ -3,9 +3,12 @@ import defaultpp from "../../../../public/assets/pp/63351f969b613d345489037b.png
 import { UserContext } from '../../../context/UserContext';
 import { NavLink } from 'react-router-dom';
 import { MessagesContext } from '../../../context/MessagesContext';
+import { useSocketContext } from '../../../context/SocketContext';
 
 const EachUser = ({person}) => {
   const {setSelectedConversation} = useContext(MessagesContext)
+  const{onlineUsers} = useSocketContext()
+  const isOnline = onlineUsers.includes(person._id)
   const {image} = useContext(UserContext)
   const imageUrl = `${image}${person.picturePath}`;
   return (
@@ -28,7 +31,7 @@ const EachUser = ({person}) => {
           
           </span>
           </div>
-        <div className='text-[#808A9D] md:text-[1rem] text-[0.8rem] '>online</div>
+        <div className='text-[#808A9D] md:text-[1rem] text-[0.8rem] '>{isOnline ? <span className='text-green-300'>online</span> : "Offline"}</div>
        
         </div>
 

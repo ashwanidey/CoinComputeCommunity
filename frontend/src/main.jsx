@@ -10,6 +10,7 @@ import { UserProvider } from './context/UserContext.jsx'
 
 import { CryptoNewsProvider } from './context/NewsContext.jsx'
 import { MessagesProvider } from './context/MessagesContext.jsx'
+import { SocketContextProvider } from './context/SocketContext.jsx'
 
 
 
@@ -17,7 +18,7 @@ import { MessagesProvider } from './context/MessagesContext.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   
     <BrowserRouter>
-   
+   <SocketContextProvider>
     <UserProvider>
       <CryptoNewsProvider>
         <MessagesProvider>
@@ -25,7 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </MessagesProvider>
         </CryptoNewsProvider>
         </UserProvider>
-   
+        </SocketContextProvider>
     </BrowserRouter>
   
 )

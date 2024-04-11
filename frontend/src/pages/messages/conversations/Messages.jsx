@@ -2,10 +2,12 @@ import React, { useContext, useEffect } from 'react'
 import { MessagesContext } from '../../../context/MessagesContext'
 import { UserContext } from '../../../context/UserContext';
 import Message from './Message';
+import useListenMessages from '../../../hooks/useListenMessages';
 
 
 const Messages = ({chatPerson,userId}) => {
   const {selectedConversation,setSelectedConversation,messages,setMessages} = useContext(MessagesContext);
+  useListenMessages();
   console.log(messages)
   // console.log(selectedConversation)
   const {host,token} = useContext(UserContext);
@@ -24,16 +26,17 @@ const Messages = ({chatPerson,userId}) => {
 
   useEffect(()=>{
     getMessages()
-  },[]);
+  },[selectedConversation,setMessages]);
 
   return (
     <>
     <div className='mb-[4rem]'>
-    {messages.map(message=>{
+    {!(messages.length === 0) ? messages.map(message=>{
       return (
-        <Message chatPerson={chatPerson} message = {message}/>
+        <Message chatPerson={chatPerson} message = {message} userId={userId}/>
       )
-    })}
+    }) : <div className='dark:text-white flex justify-center items-center'>
+      <h1 className='text-[1.2rem] font-[500]'>Be the first one to start conversation</h1></div>}
     </div>
     </>
   )
