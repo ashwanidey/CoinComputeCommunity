@@ -11,7 +11,7 @@ export const UserProvider = ({ children }) => {
   const [isLogin, setIsLogin] = useState(false);
   const [isloading, setIsLoading] = useState(false);
   const [flicker, setFlicker] = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   //  const host = "http://localhost:3001"
   const host = "https://coincomputecommunity.onrender.com";
@@ -75,10 +75,12 @@ export const UserProvider = ({ children }) => {
   
 
   useEffect(() => {
-    if(localStorage.getItem("color-theme") === 'dark'){
+    if(localStorage.getItem("color-theme") === 'dark' || localStorage.getItem("color-theme") === null){
       document.documentElement.classList.add("dark");
       document.querySelector('body').style.backgroundColor = "rgb(31 41 55 / 1)"
     }
+
+    
     
     
     setDarkMode(document.documentElement.classList.contains("dark"));

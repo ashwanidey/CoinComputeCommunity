@@ -67,9 +67,9 @@ const ConversationSection = () => {
             </div>
           </div>
           <div className="flex flex-col justify-center">
-            <h1 class="md:text-3xl text-xl font-extrabold dark:text-white">
+            <div class="md:text-3xl text-xl font-extrabold dark:text-white">
               {chatPerson && chatPerson.name}
-            </h1>
+            </div>
             <div className='text-[#808A9D] md:text-[1rem] text-[0.8rem] '>{isOnline ? <span className='text-green-300'>online</span> : "Offline"}</div>
           </div>
         </div>
@@ -80,7 +80,7 @@ const ConversationSection = () => {
       <div className=" w-full h-full rounded-lg mt-[2rem] md:mt-[6rem]  overflow-y-auto">
         <Messages chatPerson = {chatPerson} userId = {user._id}/>
       </div>
-      <div className="fixed bottom-0  w-full -mx-3">
+      <div className="fixed bottom-0 w-full -mx-3">
       <InputMessage chatUserId = {selectedConversation} userId = {user._id}/>
       </div>
      
