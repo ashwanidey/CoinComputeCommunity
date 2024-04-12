@@ -22,14 +22,18 @@ p{
 }
 
 
+@media only screen and (min-width: 762px) {
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
   }
 
   ::-webkit-scrollbar-thumb {
     border-radius: 5px;
+    
     background: linear-gradient(#191f33, #00aaff);
   }
+}
+  
 
 
 
