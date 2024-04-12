@@ -7,7 +7,9 @@ import useListenMessages from '../../../hooks/useListenMessages';
 
 const Messages = ({chatPerson,userId}) => {
   const {selectedConversation,setSelectedConversation,messages,setMessages} = useContext(MessagesContext);
-  useListenMessages();
+
+  const personId = chatPerson?._id
+  useListenMessages(personId);
  
   const lastMessageRef = useRef();
 
@@ -39,7 +41,7 @@ const Messages = ({chatPerson,userId}) => {
 
   return (
     <>
-    <div className='mb-[4rem] mt-[5rem]'>
+    <div className=' mt-[5rem] '>
     {!(messages.length === 0) ? messages.map(message=>{
       return (
         <div key={message._id} ref={lastMessageRef}>

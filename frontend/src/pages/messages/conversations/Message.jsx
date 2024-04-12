@@ -11,8 +11,10 @@ const Message = ({chatPerson,message,userId}) => {
   
   return (
     <>
+    <div className="mt-3">
     {!(message.senderId === userId) ? <ReceiverMessage person = {person} message={message}/> : <SenderMessage person = {person} message={message}/>
     }
+    </div>
     </>
       
   );

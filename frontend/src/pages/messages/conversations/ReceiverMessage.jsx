@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import defaultpp from "../../../../public/assets/pp/63351f969b613d345489037b.png";
 import { UserContext } from '../../../context/UserContext';
-
+import { extractTime } from '../../../utils/extractTime';
 const ReceiverMessage = ({person,message}) => {
   const {image} = useContext(UserContext);
   const imageUrl = `${image}${person.picturePath}`
@@ -25,19 +25,22 @@ const ReceiverMessage = ({person,message}) => {
             <span class="text-sm font-semibold text-gray-900 dark:text-white">
               {person.name}
             </span>
-            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-              11:46
-            </span>
+            
           </div>
-          <div class="flex flex-col leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-gray-700">
+          <div class="flex flex-col leading-1.5 py-2.5 px-3 w-[70%] border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-gray-600">
             <p class="text-sm font-normal text-gray-900 dark:text-white">
               {" "}
               {message.message}
             </p>
           </div>
+          <div className='flex items-center space-x-2 ltr:space-x-reverse'>
           <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
             Delivered
           </span>
+          <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
+              {extractTime(message.createdAt)}
+            </span>
+            </div>
         </div>
       </div>
   )

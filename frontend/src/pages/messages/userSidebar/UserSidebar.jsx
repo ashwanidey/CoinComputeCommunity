@@ -29,14 +29,14 @@ const UserSidebar = () => {
     // console.log(followers);
     setIsLoading(false);
   };
-  console.log(people)
+
   useEffect(()=>{
     getConversations();
   },[])
 
-  useEffect(()=>{
-    return ()=>{setInput([])}
-  },[])
+  // useEffect(()=>{
+  //   return ()=>{setInput([])}
+  // },[])
 
   return (
     <>

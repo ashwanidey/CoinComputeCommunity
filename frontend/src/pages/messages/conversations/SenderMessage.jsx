@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import defaultpp from "../../../../public/assets/pp/63351f969b613d345489037b.png";
 import { UserContext } from '../../../context/UserContext';
+import { extractTime } from '../../../utils/extractTime';
 
 const SenderMessage = ({person,message}) => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -27,19 +28,22 @@ const SenderMessage = ({person,message}) => {
             <span class="text-sm font-semibold text-gray-900 dark:text-white">
               {user.name}
             </span>
-            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-              11:46
-            </span>
+           
           </div>
-          <div class="flex flex-col leading-1.5 p-4 border-gray-200 bg-gray-100 rounded-s-xl rounded-ee-xl dark:bg-gray-700">
-            <p class="text-sm font-normal text-gray-900 dark:text-white">
+          <div class="flex flex-col leading-1.5 py-2.5 px-3 w-[70%] border-gray-200 bg-gray-100 rounded-s-xl rounded-ee-xl dark:bg-blue-600 ml-auto">
+            <p class="text-sm font-normal text-gray-900 dark:text-white ">
               {" "}
               {message.message}
             </p>
           </div>
-          <span class="text-sm font-normal text-gray-500 dark:text-gray-400 ml-auto">
+          <div className='flex items-center space-x-2 ltr:space-x-reverse ml-auto'>
+          <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
             Delivered
           </span>
+          <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
+              {extractTime(message.createdAt)}
+            </span>
+            </div>
         </div>
       </div>
   )

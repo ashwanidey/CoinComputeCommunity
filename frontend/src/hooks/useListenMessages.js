@@ -2,14 +2,16 @@ import { useContext, useEffect } from "react";
 import { useSocketContext } from "../context/SocketContext";
 import { MessagesContext } from "../context/MessagesContext";
 
-const useListenMessages = () => {
+const useListenMessages = (personId) => {
 	const { socket } = useSocketContext();
-	const { messages, setMessages } = useContext(MessagesContext);
+	const { messages, setMessages,selectedConversation } = useContext(MessagesContext);
+	
+	
 
 	useEffect(() => {
 		socket?.on("newMessage", (newMessage) => {
-			
-			
+			if(personId === newMessage.senderId)
+		
 			setMessages([...messages, newMessage]);
 		});
 
