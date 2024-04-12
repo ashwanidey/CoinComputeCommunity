@@ -39,7 +39,7 @@ const Messages = ({chatPerson,userId}) => {
 
   return (
     <>
-    <div className='mb-[4rem]'>
+    <div className='mb-[4rem] mt-[5rem]'>
     {!(messages.length === 0) ? messages.map(message=>{
       return (
         <div key={message._id} ref={lastMessageRef}>

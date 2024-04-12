@@ -10,6 +10,17 @@ export const getUser = async (req, res) => {
   }
 };
 
+export const getSearch = async (req,res) => {
+  try{
+    const {searchname} = req.params;
+
+    const filteredUsers = await User.find({ username: { $regex: searchname, $options: 'i' } });
+    res.status(200).json(filteredUsers);
+  }catch(err){
+    res.status(404).json({ message: err.message });
+  }
+}
+
 export const getUserFollowers = async (req, res) => {
   try {
     const { id } = req.params;

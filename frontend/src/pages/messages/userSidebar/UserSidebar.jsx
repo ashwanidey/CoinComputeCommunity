@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
 
 import EachUser from "./EachUser";
+import SearchResultList from "./SearchResultList";
 
 const UserSidebar = () => {
 
@@ -12,6 +13,8 @@ const UserSidebar = () => {
   const token = JSON.parse(localStorage.getItem("token"))
   const [isLoading,setIsLoading] = useState(false);
   const [people,setPeople] = useState([])
+
+  const [results,setResults] = useState([])
 
   const getConversations= async () => {
     setIsLoading(true);
@@ -31,6 +34,10 @@ const UserSidebar = () => {
     getConversations();
   },[])
 
+  useEffect(()=>{
+    return ()=>{setInput([])}
+  },[])
+
   return (
     <>
     <div>
@@ -39,7 +46,10 @@ const UserSidebar = () => {
           Messages
         </span>
       </h1>
-      <SearchBar />
+     
+      <SearchBar setResults = {setResults}/>
+      {results && results.length > 0 && <SearchResultList results={results} setResults={setResults}/>}
+      
       <div className="mt-4">
         
       {people.map(person => {

@@ -22,5 +22,14 @@ p{
 }
 
 
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: linear-gradient(#191f33, #00aaff);
+  }
+
 
 
