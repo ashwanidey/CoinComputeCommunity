@@ -43,8 +43,8 @@ const InputMessage = ({ chatUserId, userId }) => {
       <label for="chat" class="sr-only">
         Your message
       </label>
-      <div class="flex items-center px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-700 md:w-[40%] w-[98%] ">
-        <button
+      <div class="flex items-center px-3 py-2 mb-2 rounded-full bg-gray-50 dark:bg-[#212D34] md:w-[40%] w-[98%] ">
+        {/* <button
           type="button"
           class="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600"
         >
@@ -96,11 +96,11 @@ const InputMessage = ({ chatUserId, userId }) => {
             />
           </svg>
           <span class="sr-only">Add emoji</span>
-        </button>
+        </button> */}
         <textarea
           id="chat"
           rows="1"
-          class="block mx-4 p-2.5 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          class="block mr-2 px-4 w-full  text-sm text-gray-900  rounded-full   focus:ring-[#212D34] focus:border-[#212D34] dark:bg-[#212D34] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
           placeholder="Your message..."
           value={message}
           onChange={(e) => {
@@ -109,11 +109,13 @@ const InputMessage = ({ chatUserId, userId }) => {
           }}
         ></textarea>
 
+        <div className="bg-[#0071D9] rounded-full flex items-center justify-center p-1 ">
         {!loading ? (
+          
           <button
             disabled ={disabled}
             type="submit"
-            class="inline-flex justify-center p-2 text-blue-600 rounded-full cursor-pointer hover:bg-blue-100 dark:text-blue-500 dark:hover:bg-gray-600"
+            class="inline-flex justify-center p-2 text-white rounded-full cursor-pointer  dark:text-blue-500 "
           >
             <svg
               class="w-5 h-5 rotate-90 rtl:-rotate-90"
@@ -131,7 +133,7 @@ const InputMessage = ({ chatUserId, userId }) => {
             <div role="status">
               <svg
                 aria-hidden="true"
-                class="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-gray-600 dark:fill-gray-300"
+                class="inline w-8 h-8 text-gray-200 animate-spin dark:text-white fill-blue-500 "
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -149,6 +151,7 @@ const InputMessage = ({ chatUserId, userId }) => {
             </div>
           </>
         )}
+        </div>
       </div>
     </form>
   );

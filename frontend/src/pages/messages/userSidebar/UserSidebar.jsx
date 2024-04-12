@@ -51,7 +51,7 @@ const UserSidebar = () => {
       {results && results.length > 0 && <SearchResultList results={results} setResults={setResults}/>}
       
       <div className="mt-4">
-        
+      <div className="dark:text-white mb-3 font-[800] text-[1.3rem]">All Messages</div>
       {people.map(person => {
         return (
           <EachUser person = {person}/>

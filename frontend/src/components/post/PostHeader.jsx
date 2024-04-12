@@ -49,7 +49,7 @@ const PostHeader = ({ post, imageUrl,isFollowing }) => {
 
   return (
     <div className="flex gap-2 sm:gap-4 mb-3 items-center dark:text-white">
-      <div className="lg:w-[56px] lg:h-[56px] md:w-[45px] md:h-[45px] w-[32px] h-[32px] rounded-full" style={darkMode ? {boxShadow: "0px 8px 32px 0px #0D1421, 0px 1px 2px 0px #0D1421"} : {boxShadow : "0px 8px 32px 0px rgba(128,138,157,0.24),0px 1px 2px 0px rgba(128,138,157,0.12)"}}>
+      <div className="lg:min-w-[56px] lg:h-[56px] md:min-w-[45px] md:min-h-[45px] min-w-[32px] h-[32px] rounded-full" style={darkMode ? {boxShadow: "0px 8px 32px 0px #0D1421, 0px 1px 2px 0px #0D1421"} : {boxShadow : "0px 8px 32px 0px rgba(128,138,157,0.24),0px 1px 2px 0px rgba(128,138,157,0.12)"}}>
         <div className="w-full h-full rounded-full overflow-hidden">
           <img
             src={imageUrl}

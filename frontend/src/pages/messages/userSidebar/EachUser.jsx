@@ -9,12 +9,12 @@ const EachUser = ({person}) => {
   const {setSelectedConversation} = useContext(MessagesContext)
   const{onlineUsers} = useSocketContext()
   const isOnline = onlineUsers.includes(person._id)
-  const {image} = useContext(UserContext)
+  const {image,darkMode} = useContext(UserContext)
   const imageUrl = `${image}${person.picturePath}`;
   return (
-    <NavLink to={`/messages/${person._id}`}>
+    <NavLink to={`/messages/${person._id}`} className="text-decoration-none color-inherit">
     <div  className='flex gap-2 sm:gap-4 mb-3 items-center' onClick={()=>setSelectedConversation(person._id)}>
-        <div className='md:w-[56px] md:h-[56px] w-[45px] h-[45px]'>
+        <div className='md:min-w-[56px] md:h-[56px] min-w-[45px] h-[45px] rounded-full' style={darkMode ? {boxShadow: "0px 8px 32px 0px #0D1421, 0px 1px 2px 0px #0D1421"} : {boxShadow : "0px 8px 32px 0px rgba(128,138,157,0.24),0px 1px 2px 0px rgba(128,138,157,0.12)"}}>
           <div className='w-full h-full rounded-full overflow-hidden'>
           <img src={imageUrl} onError={(e) => {e.target.src = defaultpp}} alt="" className="object-cover w-full h-full" />
           </div>

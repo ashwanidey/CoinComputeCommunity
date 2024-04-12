@@ -5,10 +5,11 @@ import { extractTime } from '../../../utils/extractTime';
 const ReceiverMessage = ({person,message}) => {
   const {image} = useContext(UserContext);
   const imageUrl = `${image}${person.picturePath}`
+  const {darkMode} = useContext(UserContext)
   
   return (
     <div class="flex items-start gap-2.5">
-        <div className="md:w-[56px] md:h-[56px] w-[45px] h-[45px]">
+        <div className="md:min-w-[40-px] md:min-h-[40px] min-w-[30px] h-[30px] rounded-full" style={darkMode ? {boxShadow: "0px 8px 32px 0px #0D1421, 0px 1px 2px 0px #0D1421"} : {boxShadow : "0px 8px 32px 0px rgba(128,138,157,0.24),0px 1px 2px 0px rgba(128,138,157,0.12)"}}>
           <div className="w-full h-full rounded-full overflow-hidden">
             <img
               src={imageUrl}
@@ -27,9 +28,9 @@ const ReceiverMessage = ({person,message}) => {
             </span>
             
           </div>
-          <div class="flex flex-col leading-1.5 py-2.5 px-3 w-[70%] border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-gray-600">
-            <div class="text-sm font-normal text-gray-900 dark:text-white">
-              {" "}
+          <div class="flex flex-col leading-1.5 py-2.5 px-3 w-[70%] border-gray-200 bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-[#3F474B]" style={darkMode ? {boxShadow: "0px 8px 32px 0px #0D1421, 0px 1px 2px 0px #0D1421"} : {}}>
+            <div class="text-sm  text-gray-900 dark:text-white" >
+              
               {message.message}
             </div>
           </div>

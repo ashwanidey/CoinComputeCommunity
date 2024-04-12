@@ -6,14 +6,18 @@ import defaultpp from "../../../../public/assets/pp/63351f969b613d345489037b.png
 import { UserContext } from "../../../context/UserContext";
 import Messages from "./Messages";
 import InputMessage from "./InputMessage";
+import { useSocketContext } from "../../../context/SocketContext";
 
 const ConversationSection = () => {
   const { setSelectedConversation,selectedConversation  } = useContext(MessagesContext);
+  const {onlineUsers} = useSocketContext()
+  
   
   const [chatPerson,setChatPerson] = useState(null);
-  const { image,host,token } = useContext(UserContext);
+  const { image,host,token,darkMode } = useContext(UserContext);
   const user = JSON.parse(localStorage.getItem("user"));
   const imageUrl = `${image}${chatPerson && chatPerson.picturePath}`;
+  const isOnline = onlineUsers.includes(chatPerson?._id)
 
   const getUser = async () => {
     const response = await fetch(`${host}/users/${selectedConversation}`, {
@@ -34,30 +38,18 @@ const ConversationSection = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex gap-3 md:fixed sticky top-0  dark:bg-gray-800  md:w-[38%] w-[98%] ">
+      <div className="flex gap-3 md:fixed sticky top-0  bg-[#FFFFFF]  dark:bg-[#0B161F] md:w-[40%] w-full md:py-3 pb-3 " style={darkMode ? {boxShadow: "0px 8px 32px 0px #0D1421, 0px 1px 2px 0px #0D1421"} : {}}>
+       
         <button
           onClick={() => {
             navigate("/messages");
             setSelectedConversation(null);
           }}
         >
-          <svg
-            class="w-6 h-6 text-gray-800 dark:text-white"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 12h14M5 12l4-4m-4 4 4 4"
-            />
-          </svg>
+         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/>
+</svg>
+
         </button>
 
         {/* HEADER */}
@@ -78,9 +70,7 @@ const ConversationSection = () => {
             <h1 class="md:text-3xl text-xl font-extrabold dark:text-white">
               {chatPerson && chatPerson.name}
             </h1>
-            <div className="text-[#808A9D] md:text-[1rem] text-[0.8rem] ">
-              online
-            </div>
+            <div className='text-[#808A9D] md:text-[1rem] text-[0.8rem] '>{isOnline ? <span className='text-green-300'>online</span> : "Offline"}</div>
           </div>
         </div>
       </div>
