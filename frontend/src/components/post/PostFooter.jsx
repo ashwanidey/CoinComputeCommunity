@@ -112,7 +112,7 @@ const PostFooter = ({ isLoggedIn, postUserId, deleteUser, post, setPost }) => {
               d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"
             />
           </svg>
-          <div className="mb-0.1 text-gray-800 dark:text-white">{numberOfLikes}</div>
+          <div className="mb-0.1 text-gray-800 dark:text-white">{likeCount}</div>
         </button>
       )}
       <button className="ml-8" onClick={() => setShowCommentModal(true)}>
