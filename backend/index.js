@@ -24,6 +24,7 @@ import postRoutes from "./routes/posts.js";
 import commentRoutes from "./routes/comments.js"
 import messagesRoutes from "./routes/messages.js"
 import { app,server } from "./socket/scoket.js";
+import { editProfile } from "./controllers/users.js";
 
 
 // CONFIGURATION
@@ -41,9 +42,21 @@ app.use(morgan("common"));
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/assets");
+  },
+  filename: function (req, file, cb) {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  },
+});
+const upload = multer({ storage });
 // ROUTES
 app.post("/auth/register", register);
+app.post("/editprofile/:userId", upload.single("picture"),editProfile);
 
 //Router routes
 app.use("/verify", verifyRoutes);
