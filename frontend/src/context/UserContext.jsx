@@ -14,7 +14,8 @@ export const UserProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(true);
 
   //  const host = "http://localhost:3001"
-  const host = "https://coincomputecommunity.onrender.com";
+  // const host = "https://coincomputecommunity.onrender.com";
+  const host = "https://coincomputecommunity-6szc.onrender.com"
   const image = `https://raw.githubusercontent.com/ashwanidey/CoinComputeCommunity/main/frontend/public/assets/pp/`;
   const admin = "661243ddade7861c070d59ea";
   // const image = `../../../public/assets/pp/`

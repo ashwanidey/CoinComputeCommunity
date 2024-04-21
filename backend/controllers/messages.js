@@ -68,9 +68,6 @@ export const getMessages = async (req, res) => {
 export const getConversations = async (req, res) => {
   try {
     const { userId } = req.params;
-		// console.log(userId)
-
-        // Find conversations where the participants array contains the userId
         const conversations = await Conversation.find({
             participants: { $elemMatch: { $eq: userId } }
         }).populate('participants');
@@ -80,23 +77,9 @@ export const getConversations = async (req, res) => {
 			});
 
 			const formattedPeople = people.flat()
-			// const newPeople = formattedPeople.filter(p => {return (p._id !== userId)});
-			// const userIdObj = mongoose.Types.ObjectId(userId);
 
 			const filteredArray = formattedPeople.filter(person => person._id != userId);
-
-			
-
-
         res.status(200).json(filteredArray);
-
-
-		
-		
-
-        
-
-    // res.status(200).json(conversations);
   } catch (e) {
     res.status(500).json({ error: "Internal server error" });
   }

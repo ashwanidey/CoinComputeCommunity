@@ -5,7 +5,6 @@ import User from "../models/User.js";
 export const getPostComments = async(req,res) => {
   try{
     const {postId} = req.params;
-
     const comments = await Comment.find({postId});
     res.status(200).json(comments);
   }catch(err){
@@ -39,13 +38,9 @@ export const createComment = async (req, res) => {
       description,
       userPicturePath: user.picturePath,
       isBullish,
-      // picturePath,
       likes: {},
-      // comments: [],
     });
     const savedComment = await newComment.save();
-
-    // const post = await Post.find();
     res.status(201).json(savedComment);
   } catch (err) {
     res.status(409).json({ message: err.message });
@@ -57,7 +52,6 @@ export const deleteComment = async(req,res) => {
   try{
     const { id } = req.params;
     const deletedComment = await Comment.deleteOne({ _id: id });
-
     const Comments = await Comment.find()
     res.status(201).json(Comments);
   }catch (err) {

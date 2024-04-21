@@ -11,7 +11,6 @@ export const editProfile = async(req,res) => {
       {picturePath,username},
       { new: true }
     )
-
     res.status(200).json(updatedUser);
   }catch(err){
     res.status(404).json({message: err.message});
@@ -31,7 +30,6 @@ export const getUser = async (req, res) => {
 export const getSearch = async (req,res) => {
   try{
     const {searchname} = req.params;
-
     const filteredUsers = await User.find({ username: { $regex: searchname, $options: 'i' } });
     res.status(200).json(filteredUsers);
   }catch(err){
@@ -43,8 +41,6 @@ export const getUserFollowers = async (req, res) => {
   try {
     const { id } = req.params;
     const user = await User.findById(id);
-
-
     const followers = await Promise.all(
       user.followers.map((id) => User.findById(id))
     );
@@ -65,9 +61,6 @@ export const getUserFollowing = async (req, res) => {
   try {
     const { id } = req.params;
     const user = await User.findById(id);
-    
-
-
     const following = await Promise.all(
       user.following.map((id) => User.findById(id))
     );
@@ -118,16 +111,6 @@ export const addRemoveFollowing = async (req, res) => {
     }
     await user.save();
     await friend.save();
-
-    // const following = await Promise.all(
-    //   user.following.map((id) => User.findById(id))
-    // );
-    // const formattedFollowing = following.map(
-    //   ({ _id, name, username, picturePath }) => {
-    //     return { _id, name, username, picturePath };
-    //   }
-    // );
-
     res.status(200).json({message : "done"});
   } catch (err) {
     res.status(404).json({ message: err.message });

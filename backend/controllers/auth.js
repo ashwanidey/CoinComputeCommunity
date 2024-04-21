@@ -18,12 +18,7 @@ export const register = async (req, res) => {
       password: passwordHash,
       
     });
-    // const newUser = new User({
-    //   name: "John Doe",
-    //   username: "johndoe",
-    //   email: "johndoe@example.com",
-    //   password: "password123"
-    // });
+    
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
   } catch (err) {
